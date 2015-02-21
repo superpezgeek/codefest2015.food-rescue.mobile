@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('LoginCtrl', function($scope, loginService, $ionicLoading) {
+  .controller('LoginCtrl', function ($scope, loginService, $ionicLoading, userService) {
     $scope.showLoginError = false;
 
     $scope.user = {
@@ -7,24 +7,20 @@ angular.module('app')
       password: ''
     };
 
-    $scope.login = function(user) {
+    $scope.login = function (user) {
       $ionicLoading.show({
         template: 'Logging you in...'
       });
       loginService.login(user).then(
-        function(response) {
+        function (value) {
           $ionicLoading.hide();
-
-          if(response) {
-            $scope.showLoginError = false;
-          }
-          else {
-            $scope.showLoginError = true;
-          }
+          $scope.showLoginError = false;
+          userService.user = value.data.user;
         },
-        function() {
+        function () {
           $ionicLoading.hide();
           $scope.showLoginError = true;
+          userService.clearUser();
         });
     };
   });
