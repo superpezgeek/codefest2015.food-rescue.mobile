@@ -52,11 +52,11 @@
         })
         .state('app.driverReg', {
           url: '/driver-reg',
-          controller: 'DriverRegCtrl',
           abstract: true,
           views: {
             'menuContent': {
-                template: '<ion-nav-view name="driverReg"></ion-nav-view>'
+              template: '<ion-nav-view name="driverReg"></ion-nav-view>',
+              controller: 'DriverRegCtrl'
             }
           }
         })
@@ -89,6 +89,14 @@
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg4.html'
+            }
+          }
+        })
+        .state('app.driverReg.step5', {
+          url: '/step-5',
+          views: {
+            'driverReg': {
+              templateUrl: 'views/driver/driverReg5.html'
             }
           }
         })
