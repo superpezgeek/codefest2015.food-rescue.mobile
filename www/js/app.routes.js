@@ -23,6 +23,24 @@
             }
           }
         })
+        .state('app.driver', {
+          url: '/driver',
+          abstract: true,
+          views: {
+            'menuContent': {
+                template: '<ion-nav-view name="driverContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.driver.listing', {
+          url: '/listing',
+          views: {
+            'driverContent': {
+              templateUrl: 'views/driver/listing.html',
+              controller: 'DriverListCtrl'
+            }
+          }
+        })
         .state('app.driverReg', {
           url: '/driver-reg',
           abstract: true,

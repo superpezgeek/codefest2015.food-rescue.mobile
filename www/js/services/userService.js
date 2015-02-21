@@ -3,7 +3,7 @@ angular.module('app')
 
     Object.defineProperty(this, 'user', {
       get: function () {
-       return $window.localStorage.getItem('foodrescue.user');
+       return angular.fromJson($window.localStorage.getItem('foodrescue.user'));
       },
       set: function (user) {
         if (angular.isObject(user)) {
@@ -16,6 +16,5 @@ angular.module('app')
 
     this.clearUser = function () {
       $window.localStorage.removeItem('foodrescue.user');
-    }
-
+    };
   });
