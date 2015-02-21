@@ -9,6 +9,15 @@
           templateUrl: "views/login.html",
           controller: "LoginCtrl"
         })
+        .state('about', {
+          url: "/about",
+          templateUrl: "views/about.html"
+        })
+        .state('registration', {
+          url: "/registration",
+          abstract: true,
+          templateUrl: "views/registration.html"
+        })
         .state('app', {
           url: '/app',
           abstract: true,
