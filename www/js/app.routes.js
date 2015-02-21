@@ -23,6 +23,15 @@
             }
           }
         })
+        .state('app.donation', {
+          url: '/donation',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/donor/create-donation.html',
+              controller: 'DonorCtrl'
+            }
+          }
+        })
         .state('app.profile', {
           url: '/profile',
           views: {
