@@ -12,7 +12,7 @@ angular.module('app')
       loginService.login(user).then(
         function (response) {
           $ionicLoading.hide();
-          userService.user = response.user;
+          userService.user = response.data.user;
         },
         function (error) {
           $ionicLoading.hide();
