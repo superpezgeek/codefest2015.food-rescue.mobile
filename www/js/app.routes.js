@@ -22,6 +22,15 @@
               templateUrl: 'views/overview.html'
             }
           }
+        })
+        .state('app.donation', {
+          url: '/donation',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/donor/create-donation.html',
+              controller: 'DonorCtrl'
+            }
+          }
         });
 
       // if none of the above states are matched, use this as the fallback
