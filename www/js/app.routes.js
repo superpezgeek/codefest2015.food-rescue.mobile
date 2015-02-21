@@ -48,6 +48,22 @@
             }
           }
         })
+        .state('app.driverReg.step3', {
+          url: '/step-3',
+          views: {
+            'driverReg': {
+              templateUrl: 'views/driverReg3.html'
+            }
+          }
+        })
+        .state('app.driverReg.step4', {
+          url: '/step-4',
+          views: {
+            'driverReg': {
+              templateUrl: 'views/driverReg4.html'
+            }
+          }
+        })
         .state('app.donation', {
           url: '/donation',
           views: {
