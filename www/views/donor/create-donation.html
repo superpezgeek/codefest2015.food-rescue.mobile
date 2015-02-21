@@ -1,29 +1,31 @@
 <ion-view view-title="Donate">
-  <ion-content>
+  <ion-content padding="true">
 
-    <label class="item item-input">
-      <span class="input-label">Item</span>
-      <input type="text">
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Description</span>
-      <input type="text">
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Gross Weight</span>
-      <input type="text">
-    </label>
+    <form name="createDonationForm"
+          ng-init="donation = {}"
+          ng-submit="createDonation(donation)">
 
-    <label class="item item-input">
-      <span class="input-label">Special Instructions</span>
-      <input type="text">
-    </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Item Name" ng-model="donation.name">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Item Description" ng-model="donation.description">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Gross Weight" ng-model="donation.weight">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Dimensions" ng-model="donation.dimensions">
+      </label>
 
-    <div class="bar bar-footer bar-balanced">
-      <button class="button button-full button-positive">
-        Submit
+      <label class="item item-input">
+        <input type="text" placeholder="Special Instructions" ng-model="donation.special_instructions">
+      </label>
+
+      <button type="submit" class="button button-block button-positive">
+        Donate
       </button>
-    </div>
+    </form>
 
   </ion-content>
 </ion-view>

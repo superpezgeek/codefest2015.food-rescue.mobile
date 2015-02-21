@@ -1,22 +1,22 @@
 angular.module('app')
-  .controller('LoginCtrl', function($scope, loginService, $ionicLoading) {
+  .controller('LoginCtrl', function ($scope, loginService, userService, $ionicLoading, $log) {
     $scope.user = {
       email: '',
       password: ''
     };
 
-    $scope.login = function(user) {
+    $scope.login = function (user) {
       $ionicLoading.show({
         template: 'Logging you in...'
       });
       loginService.login(user).then(
-        function(response) {
+        function (response) {
           $ionicLoading.hide();
-          console.log(response);
+          userService.user = response.user;
         },
-        function(error) {
+        function (error) {
           $ionicLoading.hide();
-          console.log(error);
+          $log.error(error);
         });
     };
   });

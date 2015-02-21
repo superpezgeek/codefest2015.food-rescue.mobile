@@ -23,17 +23,12 @@
             }
           }
         })
-        //.state('app.donor', {
-        //  url: '/app/donor',
-        //  abstract: true,
-        //  //templateUrl: 'views/sideMenu.html',
-        //  controller: 'DonorCtrl'
-        //})
         .state('app.donation', {
           url: '/donation',
           views: {
             'menuContent': {
-              templateUrl: 'views/donor/create-donation.html'
+              templateUrl: 'views/donor/create-donation.html',
+              controller: 'DonorCtrl'
             }
           }
         });
