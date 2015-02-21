@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.foodrescue544384" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>food-rescue</name>
-  <description>
-        An Ionic Framework and Cordova project.
+<widget id="com.redroverstudio.foodrescue" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Food Rescue</name>
+    <description>
+        Food Rescue rescues perishable food about to be wasted by restaurants and retailers and directly distributes it to communities in need.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="DJRiccardi@gmail.com">
+        2015 Codefest Dream Team
     </author>
-  <content src="index.html"/>
-  <access origin="*"/>
-  <access origin="*.pushwoosh.com" />
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
+    <content src="index.html"/>
+    <access origin="*"/>
+    <access origin="*.pushwoosh.com" />
+    <preference name="webviewbounce" value="false"/>
+    <preference name="UIWebViewBounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="BackupWebStorage" value="none"/>
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true"/>
+    </feature>
 </widget>
