@@ -17,10 +17,10 @@
 
         if(window.plugins && window.plugins.pushNotification)
         {
-          if($ionicPlatform.isIOS()) {
+          if(ionic.Platform.isIOS()) {
             iosPushNotifications();
           }
-          else if($ionicPlatform.isAndroid()) {
+          else if(ionic.Platform.isAndroid()) {
             androidPushNotifictions();
           }
           else {
