@@ -59,10 +59,28 @@
         })
         .state('app.profile', {
           url: '/profile',
+          abstract: true,
           views: {
             'menuContent': {
+              template: '<ion-nav-view name="profileContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.profile.main', {
+          url: '/main',
+          views: {
+            'profileContent': {
               templateUrl: 'views/profile.html',
               controller: 'ProfileCtrl'
+            }
+          }
+        })
+        .state('app.profile.name', {
+          url: '/name',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/name.html',
+              controller: 'ProfileNameCtrl'
             }
           }
         })
