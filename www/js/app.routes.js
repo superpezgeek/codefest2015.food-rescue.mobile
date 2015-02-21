@@ -4,8 +4,11 @@
   angular
     .module('app')
     .config(function ($stateProvider, $urlRouterProvider) {
-
       $stateProvider
+        .state('login', {
+          url: "/login",
+          templateUrl: "views/login.html"
+        })
         .state('app', {
           url: '/app',
           abstract: true,
@@ -21,7 +24,6 @@
           }
         });
 
-      $urlRouterProvider.otherwise('/app/overview');
-
+      $urlRouterProvider.otherwise('/login');
     });
 })();
