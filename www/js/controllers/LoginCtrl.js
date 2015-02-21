@@ -16,7 +16,7 @@ angular.module('app')
           $ionicLoading.hide();
           $scope.showLoginError = false;
           userService.user = value.data.user;
-          $state.go('app.profile');
+          $state.go('app.profile.main');
         },
         function () {
           $ionicLoading.hide();
