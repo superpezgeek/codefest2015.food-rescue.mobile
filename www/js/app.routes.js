@@ -41,6 +41,15 @@
             }
           }
         })
+        .state('app.driver.listDetail', {
+          url: '/listing/details/:id',
+          views: {
+            'driverContent': {
+              templateUrl: 'views/driver/listDetail.html',
+              controller: 'DriverListDetailCtrl'
+            }
+          }
+        })
         .state('app.driverReg', {
           url: '/driver-reg',
           abstract: true,
