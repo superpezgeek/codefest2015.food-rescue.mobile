@@ -14,4 +14,8 @@ angular.module('app')
       }
     });
 
+    this.clearUser = function () {
+      $window.localStorage.removeItem('foodrescue.user');
+    }
+
   });
