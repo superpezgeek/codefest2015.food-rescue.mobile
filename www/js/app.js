@@ -2,10 +2,7 @@
   'use strict';
 
   angular
-    .module('app', ['ionic'])
-    .config(function ($httpProvider) {
-      $httpProvider.interceptors.push('tokenAppendingInterceptor');
-    })
+    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps'])
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -30,6 +27,14 @@
             console.error("PUSH NOTIFICATIONS NOT WORKING");
           }
         }
+      });
+    })
+    .config(function($httpProvider, uiGmapGoogleMapApiProvider) {
+      $httpProvider.interceptors.push('tokenAppendingInterceptor');
+      uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyBmqSE_OZ435kcKruJi6k8ffRlDV2OLlss',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
       });
     });
 
