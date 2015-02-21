@@ -22,6 +22,14 @@
               templateUrl: 'views/overview.html'
             }
           }
+        })
+        .state('app.profile', {
+          url: '/profile',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/profile.html'
+            }
+          }
         });
 
       // if none of the above states are matched, use this as the fallback
