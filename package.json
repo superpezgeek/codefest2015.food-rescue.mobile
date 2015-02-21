@@ -18,6 +18,7 @@
     "com.ionic.keyboard",
     "org.apache.cordova.console",
     "org.apache.cordova.device",
-    "https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin.git"
+    "https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin.git",
+    "org.apache.cordova.geolocation"
   ]
 }

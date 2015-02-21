@@ -22,6 +22,24 @@
               templateUrl: 'views/overview.html'
             }
           }
+        })
+        .state('app.driver', {
+          url: '/driver',
+          abstract: true,
+          views: {
+            'menuContent': {
+                template: '<ion-nav-view name="driverContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.driver.listing', {
+          url: '/listing',
+          views: {
+            'driverContent': {
+              templateUrl: 'views/driver/listing.html',
+              controller: 'DriverListCtrl'
+            }
+          }
         });
 
       // if none of the above states are matched, use this as the fallback
