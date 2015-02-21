@@ -1,17 +1,20 @@
 <ion-view>
   <ion-nav-buttons side="right">
-    <button class="button button-clear" ng-click="save(firstName, lastName)">
+    <button type="button" class="button button-clear" ng-click="save(user)">
       Save
     </button>
   </ion-nav-buttons>
   <ion-content scroll="false">
-    <ion-list>
-      <ion-item class="item-input">
-        <input type="text" placeholder="First Name" name="firstName" ng-model="firstName">
-      </ion-item>
-      <ion-item class="item-input">
-        <input type="text" placeholder="Last Name" name="lastName" ng-model="lastName">
-      </ion-item>
-    </ion-list>
+    <form name="nameForm">
+      <ion-list>
+        <ion-item class="item-input">
+          <input type="text" placeholder="First Name" name="firstname" ng-model="user.firstName" ng-required="true">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Last Name" name="lastname" ng-model="user.lastName" ng-required="true">
+        </ion-item>
+      </ion-list>
+    </form>
+    {{firstName}} {{lastName}}
   </ion-content>
 </ion-view>

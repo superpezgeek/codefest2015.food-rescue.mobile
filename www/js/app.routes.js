@@ -103,6 +103,7 @@
         })
         .state('app.profile.main', {
           url: '/main',
+          cache: false,
           views: {
             'profileContent': {
               templateUrl: 'views/profile.html',
