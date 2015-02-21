@@ -29,7 +29,8 @@
         }
       });
     })
-    .config(function(uiGmapGoogleMapApiProvider) {
+    .config(function($httpProvider, uiGmapGoogleMapApiProvider) {
+      $httpProvider.interceptors.push('tokenAppendingInterceptor');
       uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyBmqSE_OZ435kcKruJi6k8ffRlDV2OLlss',
         v: '3.17',
