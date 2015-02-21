@@ -6,7 +6,11 @@ angular.module('app')
        return $window.localStorage.getItem('foodrescue.user');
       },
       set: function (user) {
-        $window.localStorage.setItem('foodrescue.user', user);
+        if (angular.isObject(user)) {
+          $window.localStorage.setItem('foodrescue.user', angular.toJson(user));
+        } else {
+          throw 'Expecting "user" to be an Object';
+        }
       }
     });
 
