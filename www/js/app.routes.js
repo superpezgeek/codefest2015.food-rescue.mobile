@@ -61,8 +61,16 @@
           url: '/profile',
           views: {
             'menuContent': {
-              templateUrl: 'views/profile.html'
+              templateUrl: 'views/profile.html',
+              controller: 'ProfileCtrl'
             }
+          }
+        })
+        .state('logout', {
+          url: '/logout',
+          controller: function($state, userService) {
+            userService.clearUser();
+            $state.go('login');
           }
         });
 
