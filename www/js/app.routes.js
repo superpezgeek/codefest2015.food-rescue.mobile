@@ -6,7 +6,8 @@
       $stateProvider
         .state('login', {
           url: "/login",
-          templateUrl: "views/login.html"
+          templateUrl: "views/login.html",
+          controller: "LoginCtrl"
         });
 
       // if none of the above states are matched, use this as the fallback
