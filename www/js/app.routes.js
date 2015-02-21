@@ -52,6 +52,7 @@
         })
         .state('app.driverReg', {
           url: '/driver-reg',
+          controller: 'DriverRegCtrl',
           abstract: true,
           views: {
             'menuContent': {
@@ -63,7 +64,7 @@
           url: '/step-1',
           views: {
             'driverReg': {
-              templateUrl: 'views/driverReg1.html'
+              templateUrl: 'views/driver/driverReg1.html'
             }
           }
         })        
@@ -71,7 +72,23 @@
           url: '/step-2',
           views: {
             'driverReg': {
-              templateUrl: 'views/driverReg2.html'
+              templateUrl: 'views/driver/driverReg2.html'
+            }
+          }
+        })
+        .state('app.driverReg.step3', {
+          url: '/step-3',
+          views: {
+            'driverReg': {
+              templateUrl: 'views/driver/driverReg3.html'
+            }
+          }
+        })
+        .state('app.driverReg.step4', {
+          url: '/step-4',
+          views: {
+            'driverReg': {
+              templateUrl: 'views/driver/driverReg4.html'
             }
           }
         })
