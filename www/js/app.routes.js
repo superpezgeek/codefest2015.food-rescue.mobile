@@ -1,13 +1,13 @@
 (function () {
   'use strict';
 
-  angular
-    .module('app')
+  angular.module('app')
     .config(function ($stateProvider, $urlRouterProvider) {
       $stateProvider
         .state('login', {
           url: "/login",
-          templateUrl: "views/login.html"
+          templateUrl: "views/login.html",
+          controller: "LoginCtrl"
         })
         .state('app', {
           url: '/app',
@@ -24,6 +24,7 @@
           }
         });
 
+      // if none of the above states are matched, use this as the fallback
       $urlRouterProvider.otherwise('/login');
     });
 })();
