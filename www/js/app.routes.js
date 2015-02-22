@@ -33,17 +33,53 @@
         })
         .state('app.donorReg', {
           url: '/donor-reg',
+          abstract: true,
           views: {
             'menuContent': {
-              templateUrl: 'views/donor/donor-reg.html'
+              template: '<ion-nav-view name="donorReg"></ion-nav-view>',
+              controller: 'DonorRegCtrl'
+            }
+          }
+        })
+        .state('app.donorReg.step1', {
+          url: '/step-1',
+          views: {
+            'donorReg': {
+              templateUrl: 'views/donor/donor-reg-1.html'
+            }
+          }
+        })
+        .state('app.donorReg.step2', {
+          url: '/step-2',
+          views: {
+            'donorReg': {
+              templateUrl: 'views/donor/donor-reg-2.html'
             }
           }
         })
         .state('app.recipientReg', {
           url: '/recipient-reg',
+          abstract: true,
           views: {
             'menuContent': {
-              templateUrl: 'views/recipient/recipient-reg.html'
+              template: '<ion-nav-view name="recipientReg"></ion-nav-view>',
+              controller: 'RecipientRegCtrl'
+            }
+          }
+        })
+        .state('app.recipientReg.step1', {
+          url: '/step-1',
+          views: {
+            'recipientReg': {
+              templateUrl: 'views/recipient/recipient-reg-1.html'
+            }
+          }
+        })
+        .state('app.recipientReg.step2', {
+          url: '/step-2',
+          views: {
+            'recipientReg': {
+              templateUrl: 'views/recipient/recipient-reg-2.html'
             }
           }
         })

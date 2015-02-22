@@ -1,11 +1,7 @@
 angular
   .module('app')
-  .controller('DriverRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading) {
+  .controller('RecipientRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading) {
     $scope.user = {};
-
-    $scope.moveToStep = function(step) {
-      $state.go('app.driverReg.step' + step);
-    };
 
     $scope.createUser = function() {
       $scope.user.type = 'Driver';
@@ -24,7 +20,7 @@ angular
           $scope.user = {};
           $scope.user.first_name = first_name;
           $scope.user.last_name = last_name;
-          $state.go('app.driverReg.step2');
+          $state.go('app.recipientReg.step2');
         },
         function () {
           $ionicLoading.hide();
@@ -33,7 +29,7 @@ angular
       });
     };
 
-    $scope.updateDriverInfo = function() {
+    $scope.updateRecipientInfo = function() {
       var newUser = angular.copy(userService.user);
 
       newUser = angular.extend(newUser, $scope.user);

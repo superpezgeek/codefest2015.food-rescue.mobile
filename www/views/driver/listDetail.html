@@ -2,26 +2,47 @@
   <ion-content>
     <ui-gmap-google-map center="map.center" zoom="map.zoom">
       <ui-gmap-marker coords="getMyLocation()" idkey="1"></ui-gmap-marker>
+      <ui-gmap-marker coords="getDonorLocation()" idkey="2"></ui-gmap-marker>
+      <ui-gmap-marker coords="getRecipientLocation()" idkey="3"></ui-gmap-marker>
     </ui-gmap-google-map>
     <ion-list>
       <ion-item class="item-divider">
         Donor
       </ion-item>
       <ion-item>
-        Donor
+        <b>{{ donation.donor.first_name + ' ' + donation.donor.last_name }}</b>
+        <br>
+        {{ donation.donor.address_1 }}
+        <br>
+        {{ donation.donor.city + ', ' + donation.donor.state }}
+        &nbsp;&nbsp;&nbsp;
+        {{ donation.donor.zipcode }}
       </ion-item>
       <ion-item class="item-divider">
         Recipient
       </ion-item>
       <ion-item>
-        Recipient
+        <b>{{ donation.recipient.first_name + ' ' + donation.recipient.last_name }}</b>
+        <br>
+        {{ donation.recipient.address_1 }}
+        <br>
+        {{ donation.recipient.city + ', ' + donation.recipient.state }}
+        &nbsp;&nbsp;&nbsp;
+        {{ donation.recipient.zipcode }}
       </ion-item>
       <ion-item class="item-divider">
         Donation Details
       </ion-item>
       <ion-item>
-        Recipient
+        <b>Description</b>:  {{donation.description}}
+        <br>
+        <b>Special Instructions</b>:  {{donation.special_instructions}}
       </ion-item>
     </ion-list>
   </ion-content>
+  <div class="bar bar-footer" style="padding: 0; margin: 0;">
+    <button class="button button-block button-balanced text-center" style="margin: 0; border-radius: 0;" ng-click="accept()">
+      Accept
+    </button>
+  </div>
 </ion-view>

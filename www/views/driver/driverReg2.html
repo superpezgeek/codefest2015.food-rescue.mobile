@@ -1,17 +1,17 @@
 <ion-view view-title="Driver Registration - Step 2">
     <ion-content>
-      <form name="driverReg2Form">
+      <form name="driverReg2Form" ng-submit="moveToStep('3')">
         <div class="list list-inset">
           <label class="item item-input">
-            <input type="text" placeholder="License Plate Number" name="license-plate-number" ng-model="user.license_plate_number">
+            <input type="text" ng-required="true" placeholder="License Plate Number" name="license-plate-number" ng-model="user.license_plate_number">
           </label>
         </div>
         <div class="list list-inset">
           <label class="item item-input">
-            <input type="text" placeholder="Driver's License Number" name="drivers-license-number" ng-model="user.drivers_license_number">
+            <input type="text" ng-required="true" placeholder="Driver's License Number" name="drivers-license-number" ng-model="user.drivers_license_number">
           </label>
         </div>
-        <button class="button button-block button-positive" ng-click="moveToStep('3')">
+        <button type="submit" class="button button-block button-positive">
           Next
         </button>
       </form>
