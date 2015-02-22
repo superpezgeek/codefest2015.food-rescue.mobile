@@ -26,7 +26,7 @@
         </ion-item>
 
         <!-- Driver -->
-        <ion-item menu-close ng-if="user.user_type === 'Driver'">
+        <ion-item menu-close href="#/app/driver/current-delivery" ng-if="user.user_type === 'Driver' && hasDelivery">
           Current Delivery
         </ion-item>
         <ion-item menu-close ng-if="user.user_type === 'Driver'" href="#/app/driver/listing">

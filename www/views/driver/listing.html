@@ -1,10 +1,19 @@
 <ion-view view-title="Donations Needing Drivers">
   <ion-content>
-    <ion-item ng-repeat="donation in donations" href="#/app/driver/listing/details/{{ donation.donor.id }}/{{ donation.id }}">
-      <div class="row">
-        <div class="col col-67"><b>{{ donation.donor.first_name + ' ' + donation.donor.last_name }}</b></div>
-        <div class="col col-33 text-right">{{ donation.distance | number:2 }}mi</div>
-      </div>
-    </ion-item>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="refresh()">
+    </ion-refresher>
+    <ion-list ng-if="donations.length > 0">
+      <ion-item ng-repeat="donation in donations" href="#/app/driver/listing/details/{{ donation.donor.id }}/{{ donation.id }}">
+        <div class="row">
+          <div class="col col-67"><b>{{ donation.donor.first_name + ' ' + donation.donor.last_name }}</b></div>
+          <div class="col col-33 text-right">{{ donation.distance | number:2 }}mi</div>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div ng-if="donations.length <= 0" class="text-center">
+      <span style="font-style: italic;">No donations need delivered</span>
+    </div>
   </ion-content>
 </ion-view>
