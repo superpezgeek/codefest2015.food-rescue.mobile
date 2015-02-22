@@ -12,16 +12,37 @@
   <ion-content>
     <ion-refresher pulling-text="Pull to refresh" on-refresh="refreshDonations()"></ion-refresher>
 
-    <ion-list can-swipe="true">
-      <ion-item ng-repeat="donation in donations" ng-click="view(donation)" class="item-thumbnail-left">
-        <img ng-init="donation.image = 'http://lorempixel.com/100/100/food/?_' + donation.id" ng-src="{{donation.image}}">
-
+    <ion-list can-swipe="true" class="donations">
+      <div class="item item-divider assertive">
+        Action Required
+      </div>
+      <ion-item ng-repeat="donation in donations | filter:actionRequired()" ng-click="view(donation)" class="item-thumbnail-left">
+        <img ng-src="{{donation.image}}">
         <h2>{{donation.name}}</h2>
-
         <p>{{donation.description}}</p>
+        <p class="donation-state">{{donation.status}}</p>
+      </ion-item>
+
+      <div class="item item-divider">
+        In Progress
+      </div>
+      <ion-item ng-repeat="donation in donations | filter:inProgress()" ng-click="view(donation)" class="item-thumbnail-left">
+        <img ng-src="{{donation.image}}">
+        <h2>{{donation.name}}</h2>
+        <p>{{donation.description}}</p>
+        <p class="donation-state">{{donation.status}}</p>
 
         <ion-option-button class="button-info" ng-click="edit(donation)">Edit</ion-option-button>
         <ion-option-button class="button-assertive" ng-click="delete(donation)">Delete</ion-option-button>
+      </ion-item>
+
+      <div class="item item-divider">
+        Completed
+      </div>
+      <ion-item ng-repeat="donation in donations | filter:completed()" ng-click="view(donation)" class="item-thumbnail-left">
+        <img ng-src="{{donation.image}}">
+        <h2>{{donation.name}}</h2>
+        <p>{{donation.description}}</p>
       </ion-item>
     </ion-list>
 

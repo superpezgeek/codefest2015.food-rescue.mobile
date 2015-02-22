@@ -226,6 +226,7 @@
         })
         .state('app.donor.createDonation', {
           url: '/donate',
+          cache: false,
           views: {
             'DonorContent': {
               templateUrl: 'views/donor/create-donation.html',
@@ -235,6 +236,7 @@
         })
         .state('app.donor.viewDonation', {
           url: '/donation/:id',
+          cache: false,
           views: {
             'DonorContent': {
               templateUrl: 'views/donor/view-donation.html',
@@ -244,6 +246,7 @@
         })
         .state('app.donor.editDonation', {
           url: '/donation/:id',
+          cache: false,
           views: {
             'DonorContent': {
               templateUrl: 'views/donor/edit-donation.html',

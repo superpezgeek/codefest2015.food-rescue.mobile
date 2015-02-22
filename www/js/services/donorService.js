@@ -8,6 +8,7 @@ angular.module('app')
       if (donation.id) {
         return $http.patch('https://foodrescue.herokuapp.com/api/v1/donors/' + userService.user.id + '/donations/' + donation.id, {donation: donation})
       } else {
+        donation.image = 'http://lorempixel.com/100/100/food/?_' + Math.random();
         return $http.post('https://foodrescue.herokuapp.com/api/v1/donors/' + userService.user.id + '/donations', {donation: donation});
       }
     };
