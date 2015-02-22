@@ -23,6 +23,14 @@
             }
           }
         })
+        .state('app.choose-role', {
+          url: '/choose',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/choose-role.html'
+            }
+          }
+        })
         .state('app.driver', {
           url: '/driver',
           abstract: true,
