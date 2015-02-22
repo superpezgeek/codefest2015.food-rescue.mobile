@@ -11,6 +11,11 @@
         <p class="donations donation-state">{{donation.completed ? 'Completed' : donation.status}}</p>
       </div>
 
+      <div class="item item-divider assertive" ng-if="requiresAcknowledgement(donation)">Acknowledge</div>
+      <div class="item item-text-body" ng-if="requiresAcknowledgement(donation)">
+        <qrcode data="{{donation.driver_to_donor_handshake}}" size="200" version="4" error-correction-level="M"></qrcode>
+      </div>
+
       <div class="item item-divider" ng-if="donation.driver">Driver</div>
       <div class="item item-text-body profile" ng-if="donation.driver">
         <div class="images row">

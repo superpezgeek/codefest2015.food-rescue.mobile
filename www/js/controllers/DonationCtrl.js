@@ -1,26 +1,16 @@
 angular.module('app')
-  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, uiGmapGoogleMapApi) {
-    var hideLoading = function () {
-      $ionicLoading.hide();
-    };
-
-    $scope.recipientLocation = function () {
-      var location = {};
-      if ($scope.donation) {
-        location.latitude = $scope.donation.recipient.lat;
-        location.longitude = $scope.donation.recipient.lng;
-      }
-      return location;
-    };
+  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, $interval) {
 
     $scope.refreshDonation = function () {
-      donorService.getDonationWithId($stateParams.id)
-        .success(function (value) {
-          $scope.donation = value;
-        })
-        .finally(function () {
-          $scope.$broadcast('scroll.refreshComplete');
-        });
+      if ($stateParams.id) {
+        donorService.getDonationWithId($stateParams.id)
+          .success(function (value) {
+            $scope.donation = value;
+          })
+          .finally(function () {
+            $scope.$broadcast('scroll.refreshComplete');
+          });
+      }
     };
 
     if ($stateParams.id) {
@@ -40,12 +30,20 @@ angular.module('app')
           $scope.failure = reason;
         })
         .finally(function () {
-          hideLoading();
+          $ionicLoading.hide();
         });
     };
 
-    uiGmapGoogleMapApi.then(function() {
+    $scope.requiresAcknowledgement = function (donation) {
+      return angular.lowercase(donation.status) === 'arrived at donor';
+    };
 
+    $scope.autoRefresh = $interval(function () {
+      $scope.refreshDonation();
+    }, 5000);
+
+    $scope.$on('$destroy', function () {
+      $interval.cancel($scope.autoRefresh);
     });
 
   });
