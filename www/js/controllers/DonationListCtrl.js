@@ -13,6 +13,14 @@ angular.module('app')
       };
     };
 
+    $scope.anyActionRequired = function (donations) {
+      for (donation in donations) {
+        if ($scope.actionRequired()(donation)) {
+          return true;
+        }
+      }
+    };
+
     $scope.inProgress = function () {
       return function (item) {
         return [
@@ -20,7 +28,7 @@ angular.module('app')
             'driver in progress',
             'donation received',
             'arrived at recipient'
-        ].indexOf(angular.lowercase(item.status)) > 0;
+          ].indexOf(angular.lowercase(item.status)) > -1;
       };
     };
 
