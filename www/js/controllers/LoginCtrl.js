@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('LoginCtrl', function ($scope, loginService, $ionicLoading, userService, $state) {
+  .controller('LoginCtrl', function ($scope, loginService, $ionicLoading, userService, $state, $window) {
     $scope.showLoginError = false;
 
     $scope.user = {
@@ -11,6 +11,11 @@ angular.module('app')
       $ionicLoading.show({
         template: 'Logging you in...'
       });
+
+      // TODO: Do this better!
+      var deviceToken = $window.localStorage.getItem('foodrescue.deviceToken');
+      user.device_id = deviceToken;
+
       loginService.login(user).then(
         function (value) {
           $ionicLoading.hide();

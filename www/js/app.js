@@ -3,7 +3,7 @@
 
   angular
     .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps', 'monospaced.qrcode'])
-    .run(function($ionicPlatform, $cordovaSplashscreen, $timeout, userService, $state, $location) {
+    .run(function($ionicPlatform, $cordovaSplashscreen, $timeout, userService, $state, $location, $window) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,10 +18,10 @@
         if(window.plugins && window.plugins.pushNotification)
         {
           if(ionic.Platform.isIOS()) {
-            iosPushNotifications();
+            iosPushNotifications($window.localStorage);
           }
           else if(ionic.Platform.isAndroid()) {
-            androidPushNotifictions();
+            androidPushNotifictions($window.localStorage);
           }
           else {
             console.error("PUSH NOTIFICATIONS NOT WORKING");
@@ -64,7 +64,7 @@
     });
 
 
-  function iosPushNotifications() {
+  function iosPushNotifications(localStorage) {
     var pushNotification = window.plugins.pushNotification;
 
     //set push notification callback before we initialize the plugin
@@ -87,10 +87,11 @@
       function(status) {
         var deviceToken = status['deviceToken'];
         console.warn('registerDevice: ' + deviceToken);
+
+        localStorage.setItem('foodrescue.deviceToken', deviceToken);
       },
       function(status) {
         console.warn('failed to register : ' + JSON.stringify(status));
-        alert(JSON.stringify(['failed to register ', status]));
       }
     );
 
@@ -98,7 +99,7 @@
     pushNotification.setApplicationIconBadgeNumber(0);
   }
 
-  function androidPushNotifictions() {
+  function androidPushNotifictions(localStorage) {
     var pushNotification = window.plugins.pushNotification;
 
     //set push notifications handler
@@ -121,6 +122,8 @@
       function(status) {
         var pushToken = status;
         console.warn('push token: ' + pushToken);
+
+        localStorage.setItem('foodrescue.deviceToken', deviceToken);
       },
       function(status) {
         console.warn(JSON.stringify(['failed to register ', status]));
