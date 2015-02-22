@@ -1,11 +1,11 @@
 <ion-view view-title="Driver Registration - Step 4">
     <ion-content>
-      <form name="driverReg4Form">
+      <form name="driverReg4Form" ng-submit="updateDriverInfo()">
         <label class="item item-input item-select">
           <div class="input-label">
             Car Style
           </div>
-          <select ng-model="user.car_type">
+          <select ng-required="true" ng-model="user.car_type">
             <option selected>Commercial</option>
             <option>SUV/Crossover</option>
             <option>Convertible</option>
@@ -19,21 +19,21 @@
         </label>
         <div class="list list-inset">
           <label class="item item-input">
-            <input type="text" placeholder="Make" name="car-make" ng-model="user.car_make">
+            <input type="text" ng-required="true" placeholder="Make" name="car-make" ng-model="user.car_make">
           </label>
         </div>
         <div class="list list-inset">
           <label class="item item-input">
-            <input type="text" placeholder="Model" name="car-model" ng-model="user.car_model">
+            <input type="text" ng-required="true" placeholder="Model" name="car-model" ng-model="user.car_model">
           </label>
         </div>
         <div class="list list-inset">
           <label class="item item-input">
-            <input type="text" placeholder="Year" name="car-year" ng-model="user.car_year">
+            <input type="text" ng-required="true" placeholder="Year" name="car-year" ng-model="user.car_year">
           </label>
         </div>
-        <button class="button button-block button-positive" ng-click="moveToStep('5')">
-          Next
+        <button type="submit" class="button button-block button-positive">
+          Update Driver Information
         </button>
       </form>
     </ion-content>
