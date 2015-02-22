@@ -25,6 +25,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 @import "login";
 @import "_util";
+@import "messages";
 @import "_driver";
 @import "_overview";
 @import "_choose-role";

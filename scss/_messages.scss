@@ -1,0 +1,16 @@
+.message-error {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+
+  &.show {
+    opacity: 1.0;
+  }
+
+  .error-message {
+    text-align: center;
+    color: white;
+    display: block;
+    width: 100%;
+    font-size: 1.25em;
+  }
+}

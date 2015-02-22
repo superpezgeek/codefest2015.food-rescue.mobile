@@ -52,7 +52,7 @@
           abstract: true,
           views: {
             'menuContent': {
-                template: '<ion-nav-view name="driverContent"></ion-nav-view>'
+              template: '<ion-nav-view name="driverContent"></ion-nav-view>'
             }
           }
         })
@@ -91,7 +91,7 @@
               templateUrl: 'views/driver/driverReg1.html'
             }
           }
-        })        
+        })
         .state('app.driverReg.step2', {
           url: '/step-2',
           views: {
@@ -121,15 +121,6 @@
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg5.html'
-            }
-          }
-        })
-        .state('app.donation', {
-          url: '/donation',
-          views: {
-            'menuContent': {
-              templateUrl: 'views/donor/create-donation.html',
-              controller: 'DonorCtrl'
             }
           }
         })
@@ -184,6 +175,52 @@
           controller: function($state, userService) {
             userService.clearUser();
             $state.go('login');
+          }
+        })
+        .state('app.donor', {
+          url: '/donor',
+          abstract: true,
+          views: {
+            'menuContent': {
+              template: '<ion-nav-view name="DonorContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.donor.createDonation', {
+          url: '/donate',
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/create-donation.html',
+              controller: 'DonationCtrl'
+            }
+          }
+        })
+        .state('app.donor.viewDonation', {
+          url: '/donation/:id',
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/view-donation.html',
+              controller: 'DonationCtrl'
+            }
+          }
+        })
+        .state('app.donor.editDonation', {
+          url: '/donation/:id',
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/edit-donation.html',
+              controller: 'DonationCtrl'
+            }
+          }
+        })
+        .state('app.donor.listDonations', {
+          url: '/donations',
+          cache: false,
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/list-donations.html',
+              controller: 'DonationListCtrl'
+            }
           }
         });
 
