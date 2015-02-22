@@ -1,17 +1,20 @@
 <ion-view view-title="Donation Details">
   <ion-content padding="true">
 
-    <h2>Item Name</h2>
-    <p>{{donation.name}}</p>
+    <div class="list card">
 
-    <h2>Item Description</h2>
-    <p>{{donation.description}}</p>
+      <div class="item item-avatar">
+        <img ng-src="{{donation.image}}">
+        <h2>{{donation.name}}</h2>
+        <p>{{donation.created_at | date}}</p>
+      </div>
 
-    <h2>Gross Weight</h2>
-    <p>{{donation.dimensions}}</p>
+      <div class="item item-body">
+        <p class="donation-description">{{donation.description}}</p>
+        <p class="donation-special-instructions">{{donation.special_instructions}}</p>
+      </div>
 
-    <h2>Special Instructions</h2>
-    <p>{{donation.special_instructions}}</p>
+    </div>
 
   </ion-content>
 </ion-view>
