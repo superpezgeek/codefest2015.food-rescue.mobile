@@ -24,8 +24,28 @@
           </div>
           <div class="text-center">View Profile</div>
         </ion-item>
+
+        <!-- Driver -->
+        <ion-item ng-if="user.user_type === 'Driver'">
+          <i class="icon ion-android-radio-button-on"></i>
+          Current Delivery
+        </ion-item>
+        <ion-item menu-close ng-if="user.user_type === 'Driver'" href="#/app/driver/listing">
+          Donations Needing Drivers
+        </ion-item>
+        <ion-item ng-if="user.user_type === 'Driver'">
+          Past Deliveries
+        </ion-item>
+
+        <!-- Donor and Recipient -->
+        <ion-item ng-if="user.user_type === 'Donor'">
+          Create a Donation
+        </ion-item>
+        <ion-item ng-if="user.user_type === 'Donor' || user.user_type === 'Recipient'">
+          List of Donations
+        </ion-item>
+
         <ion-item menu-close class="item item-icon-left" ng-click="logout()">
-          <i class="icon ion-power"></i>
           Logout
         </ion-item>
       </ion-list>
