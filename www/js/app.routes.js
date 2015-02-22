@@ -215,6 +215,15 @@
               controller: 'DonationListCtrl'
             }
           }
+        })
+        .state('app.handshake', {
+          url: '/handshake',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/handshake.html',
+              controller: 'HandshakeCtrl'
+            }
+          }
         });
 
       // if none of the above states are matched, use this as the fallback

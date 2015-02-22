@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps'])
-    .run(function($ionicPlatform) {
+    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps', 'monospaced.qrcode'])
+    .run(function($ionicPlatform, $cordovaSplashscreen, $timeout) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -26,6 +26,12 @@
           else {
             console.error("PUSH NOTIFICATIONS NOT WORKING");
           }
+        }
+
+        if(window.navigator && window.navigator.splashscreen) {
+          $timeout(function() {
+            $cordovaSplashscreen.hide();
+          }, 2000);
         }
       });
     })
