@@ -111,7 +111,7 @@
           }
         })
         .state('app.driver.currentDelivery', {
-          url: '/current-delivery/:donorId?/:donationId?',
+          url: '/current-delivery?donorId&donationId',
           views: {
             'driverContent': {
               templateUrl: 'views/driver/current-delivery.html',
