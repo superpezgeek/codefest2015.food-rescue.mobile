@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state, $interval, userService) {
+  .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state, $interval, userService, $ionicPlatform) {
 
     $scope.completed = function () {
       return function (item) {
@@ -76,10 +76,16 @@ angular.module('app')
       $state.go('app.donor.createDonation');
     };
 
+    $scope.currentUserCanAddDonation = function () {
+      return userService.user && angular.lowercase(userService.user.user_type) === 'donor'
+    };
+
     $scope.refreshDonations();
-    $scope.autoRefresh = $interval(function () {
-      $scope.refreshDonations();
-    }, 5000);
+    $ionicPlatform.ready(function () {
+      $scope.autoRefresh = $interval(function () {
+        $scope.refreshDonations();
+      }, 5000);
+    });
 
     $scope.$on('$destroy', function () {
       $interval.cancel($scope.autoRefresh);

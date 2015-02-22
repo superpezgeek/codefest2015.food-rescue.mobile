@@ -4,7 +4,7 @@
       <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <button ng-click="createDonation()" class="button button-icon button-clear header-item">
+      <button ng-click="createDonation()" class="button button-icon button-clear header-item" ng-show="currentUserCanAddDonation()">
         <i class="icon ion-plus"></i>
       </button>
     </ion-nav-buttons>

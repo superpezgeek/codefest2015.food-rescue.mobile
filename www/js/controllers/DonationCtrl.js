@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, $interval, userService) {
+  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, $interval, userService, $ionicPlatform) {
 
     $scope.refreshDonation = function () {
       if ($stateParams.id) {
@@ -58,12 +58,16 @@ angular.module('app')
       }
     };
 
-    $scope.autoRefresh = $interval(function () {
-      $scope.refreshDonation();
-    }, 5000);
+    $ionicPlatform.ready(function () {
+      $scope.autoRefresh = $interval(function () {
+        $scope.refreshDonation();
+      }, 5000);
+    });
 
     $scope.$on('$destroy', function () {
       $interval.cancel($scope.autoRefresh);
     });
+
+    $scope.imageInputHidden = true;
 
   });

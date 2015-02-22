@@ -24,9 +24,14 @@
         <span class="input-label">Dimensions</span>
         <input type="text" ng-model="donation.dimensions">
       </label>
-      <label class="item item-input item-stacked-label">
+      <label class="item item-input item-stacked-label" on-hold="imageInputHidden = !imageInputHidden">
         <span class="input-label">Special Instructions</span>
         <textarea type="text" placeholder="Eg. bring around to rear loading dock" ng-model="donation.special_instructions" rows="2"></textarea>
+      </label>
+
+      <label class="item item-input item-stacked-label" style="margin-top: 50px" ng-hide="imageInputHidden">
+        <span class="input-label">Image SRC</span>
+        <input type="text" ng-model="donation.image">
       </label>
 
     </form>
