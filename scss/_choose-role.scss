@@ -1,0 +1,33 @@
+.choose-role {
+  a {
+    text-decoration: none;
+  }
+
+  .choose-role-header {
+    text-align: center;
+    font-family: 'Open Sans';
+    color: #919191;
+    background-color: #f7f7f7;
+    padding: .5em
+  }
+
+  .reg-link {
+    font-family: 'Open Sans';
+    font-size: 1.2em;
+    text-align: center;
+    color: #fff;
+    padding: 4em;
+  }
+
+  .donations {
+    background-color: #842b7f;
+  }
+
+  .deliver {
+    background-color: #ee7820;
+  }
+
+  .recipient {
+    background-color: #34bab9;
+  }
+}

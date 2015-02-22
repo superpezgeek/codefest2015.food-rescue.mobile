@@ -1,0 +1,40 @@
+<ion-view view-title="Driver Registration - Step 4">
+    <ion-content>
+      <form name="driverReg4Form">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Car Style
+          </div>
+          <select ng-model="user.car_type">
+            <option selected>Commercial</option>
+            <option>SUV/Crossover</option>
+            <option>Convertible</option>
+            <option>Coupe</option>
+            <option>Hatchback</option>
+            <option>Sedan</option>
+            <option>Truck</option>
+            <option>Van/Minivan</option>
+            <option>Wagon</option>
+          </select>
+        </label>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Make" name="car-make" ng-model="user.car_make">
+          </label>
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Model" name="car-model" ng-model="user.car_model">
+          </label>
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Year" name="car-year" ng-model="user.car_year">
+          </label>
+        </div>
+        <button class="button button-block button-positive" ng-click="moveToStep('5')">
+          Next
+        </button>
+      </form>
+    </ion-content>
+</ion-view>
