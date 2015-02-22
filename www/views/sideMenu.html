@@ -15,20 +15,14 @@
   <ion-side-menu side="left">
     <ion-content>
       <ion-list>
-        <ion-item menu-close nav-transition="none" ui-sref="app.profile.main">
-          <div class="row">
-            <div class="col text-center">
-              <img src="http://www.fillmurray.com/100/100" class="rounded"/>
-            </div>
+        <ion-item menu-close nav-transition="none" href="#/app/profile/main">
+          <div class="text-center">
+            <img src="http://www.fillmurray.com/100/100" class="rounded"/>
           </div>
-          <div class="row">
-            <div class="col col-67">
-              Name Info
-            </div>
-            <div class="col col-50">
-              Role
-            </div>
+          <div class="text-center">
+            {{ user.first_name + ' ' + user.last_name }}
           </div>
+          <div class="text-center">View Profile</div>
         </ion-item>
         <ion-item menu-close class="item item-icon-left" ng-click="logout()">
           <i class="icon ion-power"></i>
