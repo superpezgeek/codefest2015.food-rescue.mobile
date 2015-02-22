@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps'])
-    .run(function($ionicPlatform) {
+    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps', 'monospaced.qrcode'])
+    .run(function($ionicPlatform, $cordovaSplashscreen, $timeout) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -27,6 +27,12 @@
             console.error("PUSH NOTIFICATIONS NOT WORKING");
           }
         }
+
+        if(window.navigator && window.navigator.splashscreen) {
+          $timeout(function() {
+            $cordovaSplashscreen.hide();
+          }, 2000);
+        }
       });
     })
     .config(function($httpProvider, uiGmapGoogleMapApiProvider) {
@@ -34,7 +40,7 @@
       uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyBmqSE_OZ435kcKruJi6k8ffRlDV2OLlss',
         v: '3.17',
-        libraries: 'weather,geometry,visualization'
+        libraries: 'geometry,visualization'
       });
     });
 

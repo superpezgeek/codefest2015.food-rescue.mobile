@@ -10,6 +10,12 @@ angular.module('app')
             return error;
           }
         )
+      },
+      get: function() {
+        return $http.get('https://foodrescue.herokuapp.com/api/v1/drivers/');
+      },
+      getDonation: function(donorId, donationId) {
+        return $http.get('https://foodrescue.herokuapp.com/api/v1/donors/' + donorId + '/donations/' + donationId);
       }
     };
 

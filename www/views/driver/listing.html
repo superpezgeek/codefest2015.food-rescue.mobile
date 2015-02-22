@@ -1,5 +1,11 @@
 <ion-view view-title="List">
   <ion-content>
-    <ion-item ></ion-item>
+    <ion-item ng-repeat="donation in donations" href="#/app/driver/listing/details/{{ donation.donor.id }}/{{ donation.id }}">
+      <div class="row">
+        <div class="col col-67">{{ donation.donor.first_name + ' ' + donation.donor.last_name }}</div>
+        <div class="col col-33 text-right">{{ donation.distance | number:2 }}mi</div>
+      </div>
+
+    </ion-item>
   </ion-content>
 </ion-view>

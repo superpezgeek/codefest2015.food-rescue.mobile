@@ -15,20 +15,38 @@
   <ion-side-menu side="left">
     <ion-content>
       <ion-list>
-        <ion-item menu-close nav-transition="none" ui-sref="app.profile.main">
-          <div class="row">
-            <div class="col text-center">
-              <img src="http://www.fillmurray.com/100/100" class="rounded"/>
-            </div>
+        <ion-item menu-close nav-transition="none" href="#/app/profile/main">
+          <div class="text-center">
+            <img src="http://www.fillmurray.com/100/100" class="rounded"/>
           </div>
-          <div class="row">
-            <div class="col col-67">
-              Name Info
-            </div>
-            <div class="col col-50">
-              Role
-            </div>
+          <div class="text-center">
+            {{ user.first_name + ' ' + user.last_name }}
           </div>
+          <div class="text-center">View Profile</div>
+        </ion-item>
+
+        <!-- Driver -->
+        <ion-item ng-if="user.user_type === 'Driver'">
+          Current Delivery
+        </ion-item>
+        <ion-item menu-close ng-if="user.user_type === 'Driver'" href="#/app/driver/listing">
+          Donations Needing Drivers
+        </ion-item>
+        <ion-item ng-if="user.user_type === 'Driver'">
+          Past Deliveries
+        </ion-item>
+
+        <!-- Donor and Recipient -->
+        <ion-item ng-if="user.user_type === 'Donor'" href="#/app/donor/donate">
+          Create a Donation
+        </ion-item>
+        <ion-item ng-if="user.user_type === 'Donor' || user.user_type === 'Recipient'" href="#/app/donor/donations">
+          List of Donations
+        </ion-item>
+
+        <ion-item menu-close class="item item-icon-left" ui-sref="app.handshake">
+          <i class="icon ion-power"></i>
+          Handshake
         </ion-item>
         <ion-item menu-close class="item item-icon-left" ng-click="logout()">
           <i class="icon ion-power"></i>

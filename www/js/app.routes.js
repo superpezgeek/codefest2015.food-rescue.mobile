@@ -66,7 +66,7 @@
           }
         })
         .state('app.driver.listDetail', {
-          url: '/listing/details/:id',
+          url: '/listing/details/:donorId/:donationId',
           views: {
             'driverContent': {
               templateUrl: 'views/driver/listDetail.html',
@@ -213,6 +213,15 @@
             'DonorContent': {
               templateUrl: 'views/donor/list-donations.html',
               controller: 'DonationListCtrl'
+            }
+          }
+        })
+        .state('app.handshake', {
+          url: '/handshake',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/handshake.html',
+              controller: 'HandshakeCtrl'
             }
           }
         });
