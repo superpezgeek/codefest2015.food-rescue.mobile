@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state, $interval) {
+  .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state, $interval, userService) {
 
     $scope.completed = function () {
       return function (item) {
@@ -9,28 +9,44 @@ angular.module('app')
 
     $scope.actionRequired = function () {
       return function (item) {
-        return angular.lowercase(item.status) === 'arrived at donor';
+        if (angular.lowercase(userService.user.user_type) === 'donor'
+          && angular.lowercase(item.status) === 'arrived at donor') {
+          return true;
+        }
+        if (angular.lowercase(userService.user.user_type) === 'recipient'
+          && angular.lowercase(item.status) === 'arrived at recipient') {
+          return true;
+        }
       };
     };
 
-    $scope.anyActionRequired = function (donations) {
-      if (donations && donations.values) {
-        for (var donation in donations.values()) {
-          if ($scope.actionRequired()(donation)) {
-            return true;
-          }
-        }
-      }
+    $scope.belongsToCurrentUser = function () {
+      return function (item) {
+        return [
+            item.recipient_id,
+            item.donor_id
+          ].indexOf(userService.user.id) > -1;
+      };
     };
 
     $scope.inProgress = function () {
       return function (item) {
-        return [
-            'pending',
-            'driver in progress',
-            'donation received',
-            'arrived at recipient'
-          ].indexOf(angular.lowercase(item.status)) > -1;
+        if (angular.lowercase(userService.user.user_type) === 'donor') {
+          return [
+              'pending',
+              'driver in progress',
+              'donation received',
+              'arrived at recipient'
+            ].indexOf(angular.lowercase(item.status)) > -1;
+        }
+        if (angular.lowercase(userService.user.user_type) === 'recipient') {
+          return [
+              'pending',
+              'driver in progress',
+              'donation received',
+              'arrived at donor'
+            ].indexOf(angular.lowercase(item.status)) > -1;
+        }
       };
     };
 

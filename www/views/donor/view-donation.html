@@ -13,7 +13,7 @@
 
       <div class="item item-divider assertive" ng-if="requiresAcknowledgement(donation)">Acknowledge</div>
       <div class="item item-text-body" ng-if="requiresAcknowledgement(donation)">
-        <qrcode data="{{donation.driver_to_donor_handshake}}" size="200" version="4" error-correction-level="M"></qrcode>
+        <qrcode data="{{acknowledgementFor(donation)}}" size="200" version="4" error-correction-level="M"></qrcode>
       </div>
 
       <div class="item item-divider" ng-if="donation.driver">Driver</div>
@@ -48,8 +48,8 @@
         </ion-list>
       </div>
 
-      <div class="item item-divider" ng-if="donation.recipient">Recipient</div>
-      <div class="item item-text-wrap" ng-if="donation.recipient">
+      <div class="item item-divider" ng-if="donation.donor && currentUserIs(donation.donor) && donation.recipient">Recipient</div>
+      <div class="item item-text-wrap" ng-if="donation.donor && currentUserIs(donation.donor) && donation.recipient">
         <ion-list>
           <ion-item class="item item-icon-left item-icon-right">
             <i class="icon ion-person-stalker"></i>
@@ -62,6 +62,24 @@
             <div>{{donation.recipient.address_1}}</div>
             <div ng-if="donation.recipient.address_2">{{donation.recipient.address_2}}</div>
             <div>{{donation.recipient.city}}, {{donation.recipient.state}} {{donation.recipient.zipcode}}</div>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="item item-divider" ng-if="donation.recipient && currentUserIs(donation.recipient)">Donor</div>
+      <div class="item item-text-wrap" ng-if="donation.recipient && currentUserIs(donation.recipient)">
+        <ion-list>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-person-stalker"></i>
+            <div>{{donation.donor.organization_name}}</div>
+          </ion-item>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-ios7-information"></i>
+            <div>{{donation.donor.email}}</div>
+            <div>{{donation.donor.phone_number}}</div>
+            <div>{{donation.donor.address_1}}</div>
+            <div ng-if="donation.donor.address_2">{{donation.donor.address_2}}</div>
+            <div>{{donation.donor.city}}, {{donation.donor.state}} {{donation.donor.zipcode}}</div>
           </ion-item>
         </ion-list>
       </div>
