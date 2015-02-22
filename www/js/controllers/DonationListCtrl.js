@@ -14,9 +14,11 @@ angular.module('app')
     };
 
     $scope.anyActionRequired = function (donations) {
-      for (donation in donations) {
-        if ($scope.actionRequired()(donation)) {
-          return true;
+      if (donations && donations.values) {
+        for (var donation in donations.values()) {
+          if ($scope.actionRequired()(donation)) {
+            return true;
+          }
         }
       }
     };
