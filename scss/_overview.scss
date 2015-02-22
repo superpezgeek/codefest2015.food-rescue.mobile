@@ -1,10 +1,13 @@
 .scroll-content.overview {
-  background-color: $balanced;
+  font-family: 'Open Sans';
   text-align: center;
-  color: #fff;
   h1 {
-    background-color: #fff;
     text-align: center;
+    font-family: 'Open Sans'
+  }
+  p {
+    margin: 1em .5em;
+    text-align: left;
   }
   .col {
     background-color: #fff;
