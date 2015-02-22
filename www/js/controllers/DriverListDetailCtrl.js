@@ -51,6 +51,10 @@ angular
       return recipientLocation;
     };
 
+    $scope.accept = function() {
+      driverService.accept($scope.donation.donor.id, $scope.donation.id);
+    };
+
     $ionicPlatform.ready(function() {
       $cordovaGeolocation
         .getCurrentPosition(posOptions)

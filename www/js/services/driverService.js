@@ -16,6 +16,9 @@ angular.module('app')
       },
       getDonation: function(donorId, donationId) {
         return $http.get('https://foodrescue.herokuapp.com/api/v1/donors/' + donorId + '/donations/' + donationId);
+      },
+      accept: function(donorId, donationId) {
+        return $http.post('https://foodrescue.herokuapp.com/api/v1/donors/' + donorId + '/donations/' + donationId + '/start_donation');
       }
     };
 

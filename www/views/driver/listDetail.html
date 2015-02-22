@@ -34,11 +34,15 @@
         Donation Details
       </ion-item>
       <ion-item>
-        Recipient
+        <b>Description</b>:  {{donation.description}}
+        <br>
+        <b>Special Instructions</b>:  {{donation.special_instructions}}
       </ion-item>
     </ion-list>
   </ion-content>
   <div class="bar bar-footer" style="padding: 0; margin: 0;">
-    <button class="button button-block button-balanced text-center" style="margin: 0; border-radius: 0;">Accept</button>
+    <button class="button button-block button-balanced text-center" style="margin: 0; border-radius: 0;" ng-click="accept()">
+      Accept
+    </button>
   </div>
 </ion-view>
