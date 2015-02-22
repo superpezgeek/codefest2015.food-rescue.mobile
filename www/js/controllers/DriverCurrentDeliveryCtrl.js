@@ -16,7 +16,7 @@ angular.module('app')
       driverService
         .getCurrentDonations(user)
         .success(function(result) {
-          $scope.donations = result;
+          $scope.donation = result[0];
         })
         .error(function(error) {
           console.log(error);
