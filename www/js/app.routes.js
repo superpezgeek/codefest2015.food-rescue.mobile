@@ -170,13 +170,6 @@
             }
           }
         })
-        .state('logout', {
-          url: '/logout',
-          controller: function($state, userService) {
-            userService.clearUser();
-            $state.go('login');
-          }
-        })
         .state('app.donor', {
           url: '/donor',
           abstract: true,
