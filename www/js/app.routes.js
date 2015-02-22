@@ -31,6 +31,22 @@
             }
           }
         })
+        .state('app.donorReg', {
+          url: '/donor-reg',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/donor/donor-reg.html'
+            }
+          }
+        })
+        .state('app.recipientReg', {
+          url: '/recipient-reg',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/recipient/recipient-reg.html'
+            }
+          }
+        })
         .state('app.driver', {
           url: '/driver',
           abstract: true,
