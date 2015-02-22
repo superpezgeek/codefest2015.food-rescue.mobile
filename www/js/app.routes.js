@@ -137,6 +137,15 @@
             }
           }
         })
+        .state('app.profile.contactInfo', {
+          url: '/contact-info',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/contact-info.html',
+              controller: 'ProfileContactInfoCtrl'
+            }
+          }
+        })
         .state('logout', {
           url: '/logout',
           controller: function($state, userService) {

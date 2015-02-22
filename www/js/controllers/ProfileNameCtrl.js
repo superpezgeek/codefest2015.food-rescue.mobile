@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('ProfileNameCtrl', function($scope, userService, $state, driverService, $resolve) {
+  .controller('ProfileNameCtrl', function($scope, userService, $state, driverService) {
     $scope.user = {
       firstName: userService.user.first_name,
       lastName: userService.user.last_name
