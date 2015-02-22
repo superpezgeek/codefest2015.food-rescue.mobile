@@ -3,7 +3,7 @@
 
   angular
     .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps', 'monospaced.qrcode'])
-    .run(function($ionicPlatform, $cordovaSplashscreen, $timeout) {
+    .run(function($ionicPlatform, $cordovaSplashscreen, $timeout, userService, $state, $location) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -29,6 +29,25 @@
         }
 
         if(window.navigator && window.navigator.splashscreen) {
+          if(userService.user && userService.user.user_type) {
+            var state = '';
+            switch(userService.user.user_type) {
+              case 'Driver':
+                state = 'app.driver.listing';
+                break;
+              case 'Donor':
+              case 'Recipient':
+                state = 'app.donor.listDonations';
+                break;
+              default:
+                state = 'login';
+                break;
+            }
+
+            var href = $state.href(state);
+            $location.url(href.replace('#', ''));
+          }
+
           $timeout(function() {
             $cordovaSplashscreen.hide();
           }, 2000);
