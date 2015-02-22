@@ -1,0 +1,39 @@
+<ion-view class="profile">
+  <ion-content>
+    <div class="images row">
+      <div class="col">
+        <img src="img/avatar.svg">
+      </div>
+      <div class="col">
+        <img src="img/driver-car.jpg">
+      </div>
+    </div>
+    <ion-list>
+      <ion-item class="item item-icon-left item-icon-right" ui-sref="app.profile.name">
+        <i class="icon ion-person"></i>
+        {{user.first_name}} {{user.last_name}}
+        <i class="icon ion-ios7-arrow-forward"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right" ui-sref="app.profile.contactInfo">
+        <i class="icon ion-ios7-information"></i>
+        <div>{{user.email}}</div>
+        <div>{{user.phone_number}}</div>
+        <div>{{user.address_1}}</div>
+        <div ng-if="user.address_2">{{user.address_2}}</div>
+        <div>{{user.city}}, {{user.state}} {{user.zipcode}}</div>
+        <i class="icon ion-ios7-arrow-forward"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right" ui-sref="app.profile.vehicleInfo">
+        <i class="icon ion-model-s"></i>
+        <div>{{user.car_make}} {{user.car_model}} {{user.car_year}} ({{user.license_plate_number}})</div>
+        <div>{{user.drivers_license_number}}</div>
+        <i class="icon ion-ios7-arrow-forward"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left item-icon-right" ui-sref="logout">
+        <i class="icon ion-power"></i>
+        Logout
+        <i class="icon ion-ios7-arrow-forward"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -108,6 +108,59 @@
               controller: 'DonorCtrl'
             }
           }
+        })
+        .state('app.profile', {
+          url: '/profile',
+          abstract: true,
+          views: {
+            'menuContent': {
+              template: '<ion-nav-view name="profileContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.profile.main', {
+          url: '/main',
+          cache: false,
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile.html',
+              controller: 'ProfileCtrl'
+            }
+          }
+        })
+        .state('app.profile.name', {
+          url: '/name',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/name.html',
+              controller: 'ProfileNameCtrl'
+            }
+          }
+        })
+        .state('app.profile.contactInfo', {
+          url: '/contact-info',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/contact-info.html',
+              controller: 'ProfileContactInfoCtrl'
+            }
+          }
+        })
+        .state('app.profile.vehicleInfo', {
+          url: '/vehicle-info',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/vehicle-info.html',
+              controller: 'ProfileVehicleInfoCtrl'
+            }
+          }
+        })
+        .state('logout', {
+          url: '/logout',
+          controller: function($state, userService) {
+            userService.clearUser();
+            $state.go('login');
+          }
         });
 
       // if none of the above states are matched, use this as the fallback

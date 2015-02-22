@@ -1,0 +1,31 @@
+<ion-view>
+  <ion-nav-buttons side="right">
+    <button type="button" class="button button-clear" ng-click="save(user)">
+      Save
+    </button>
+  </ion-nav-buttons>
+  <ion-content scroll="false">
+    <form name="contactInfoForm">
+      <ion-list>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Phone Number" name="phonenumber" ng-model="user.phone_number">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Address 1" name="address1" ng-model="user.address_1">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Address 2" name="address2" ng-model="user.address_2">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="City" name="city" ng-model="user.city">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="State" name="state" ng-model="user.state">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Zip" name="zip" ng-model="user.zipcode">
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-view>
