@@ -8,7 +8,7 @@
         <div>{{donation.donor.first_name}} {{donation.donor.last_name }}</div>
         <div>{{donation.donor.address_1}}</div>
         <div>{{donation.donor.city}}, {{donation.donor.state}} {{donation.donor.zipcode}}</div>
-        <i class="icon" ng-class="donation.status === 'Donation Received' ? 'ion-ios7-checkmark-outline' : 'ion-ios7-circle-outline'"></i>
+        <i class="icon" ng-class="(donation.status === 'Donation Received' || donation.status === 'Arrived at Recipient' || donation.status === 'Completed') ? 'ion-ios7-checkmark-outline' : 'ion-ios7-circle-outline'"></i>
       </ion-item>
       <ion-item class="item-divider" ng-if="donation.special_instructions && donation.status === 'Driver In Progress'">
         Driver Instructions
@@ -37,9 +37,9 @@
         <i class="icon" ng-class="donation.status === 'Completed' ? 'ion-ios7-checkmark-outline' : 'ion-ios7-circle-outline'"></i>
       </ion-item>
       <ion-item ng-if="donation.status === 'Donation Received' || donation.status === 'Arrived at Recipient'">
-        <button class="button button-block button-outline button-balanced" ng-if="donation.status === 'Donation Received'">
+        <a class="button button-block button-outline button-balanced" ng-href="http://maps.apple.com/?q={{donation.recipient.lat}},{{donation.recipient.lng}}" ng-if="donation.status === 'Donation Received'">
           Open location in Maps
-        </button>
+        </a>
         <button class="button button-block button-balanced" ng-if="donation.status === 'Donation Received'" ng-click="arrivedAtRecipient()">
           I'm here
         </button>
