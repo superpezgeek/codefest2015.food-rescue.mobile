@@ -1,14 +1,18 @@
 angular
   .module('app')
-  .controller('RecipientRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading) {
+  .controller('RecipientRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading, $window, $ionicHistory) {
     $scope.user = {};
 
     $scope.createUser = function() {
-      $scope.user.type = 'Driver';
+      $scope.user.type = 'Recipient';
 
       $ionicLoading.show({
         template: 'Registering...'
       });
+
+      // TODO: Do this better!
+      var deviceToken = $window.localStorage.getItem('foodrescue.deviceToken');
+      $scope.user.device_id = deviceToken;
 
       userRegService.create($scope.user).then(function(response) {
         var user = { email: $scope.user.email, password: $scope.user.password };
@@ -40,7 +44,14 @@ angular
 
       driverService.update(newUser).then(function(response) {
         $ionicLoading.hide();
+        response.data.user_type = 'Recipient';
         userService.user = response.data;
+
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true,
+          historyRoot: true
+        });
         $state.go('app.profile.main', null, {location: 'replace'});
       });
     };
