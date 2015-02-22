@@ -1,5 +1,5 @@
 <ion-view view-title="Donations">
-  <ion-nav-bar>
+  <ion-nav-bar class="bar-balanced">
     <ion-nav-buttons side="left">
       <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
     </ion-nav-buttons>
@@ -14,7 +14,7 @@
 
     <ion-list can-swipe="true">
       <ion-item ng-repeat="donation in donations" ng-click="view(donation)" class="item-thumbnail-left">
-        <img ng-init="donation.image = 'http://lorempixel.com/100/100/food/' + donation.id" ng-src="{{donation.image}}">
+        <img ng-init="donation.image = 'http://lorempixel.com/100/100/food/?_' + donation.id" ng-src="{{donation.image}}">
 
         <h2>{{donation.name}}</h2>
 
