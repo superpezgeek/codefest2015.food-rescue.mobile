@@ -26,7 +26,6 @@ angular
     driverService
       .getDonation($stateParams.donorId, $stateParams.donationId)
       .success(function(result) {
-        console.log(result);
         $scope.donation = result;
 
         donorLocation.latitude = result.donor.lat;

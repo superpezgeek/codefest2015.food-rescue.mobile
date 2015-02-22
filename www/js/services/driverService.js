@@ -20,6 +20,9 @@ angular.module('app')
       },
       accept: function(donorId, donationId) {
         return $http.post('https://foodrescue.herokuapp.com/api/v1/donors/' + donorId + '/donations/' + donationId + '/start_donation');
+      },
+      hasDelivery: function(userId) {
+        return $http.get('https://foodrescue.herokuapp.com/api/v1/drivers/' + userId + '/current_donations');
       }
     };
 
