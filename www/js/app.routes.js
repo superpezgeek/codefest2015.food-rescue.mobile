@@ -146,6 +146,15 @@
             }
           }
         })
+        .state('app.profile.vehicleInfo', {
+          url: '/vehicle-info',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/vehicle-info.html',
+              controller: 'ProfileVehicleInfoCtrl'
+            }
+          }
+        })
         .state('logout', {
           url: '/logout',
           controller: function($state, userService) {
