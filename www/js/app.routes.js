@@ -162,13 +162,6 @@
               controller: 'ProfileVehicleInfoCtrl'
             }
           }
-        })
-        .state('logout', {
-          url: '/logout',
-          controller: function($state, userService) {
-            userService.clearUser();
-            $state.go('login');
-          }
         });
 
       // if none of the above states are matched, use this as the fallback
