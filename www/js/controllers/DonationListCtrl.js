@@ -35,7 +35,7 @@ angular.module('app')
           return [
               'pending',
               'driver in progress',
-              'donation received',
+              'donation recieved',
               'arrived at recipient'
             ].indexOf(angular.lowercase(item.status)) > -1;
         }
@@ -43,7 +43,7 @@ angular.module('app')
           return [
               'pending',
               'driver in progress',
-              'donation received',
+              'donation recieved',
               'arrived at donor'
             ].indexOf(angular.lowercase(item.status)) > -1;
         }
