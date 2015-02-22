@@ -1,5 +1,28 @@
 angular.module('app')
-  .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state) {
+  .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state, $interval) {
+
+    $scope.completed = function () {
+      return function (item) {
+        return item.completed;
+      };
+    };
+
+    $scope.actionRequired = function () {
+      return function (item) {
+        return angular.lowercase(item.status) === 'arrived at donor';
+      };
+    };
+
+    $scope.inProgress = function () {
+      return function (item) {
+        return [
+            'pending',
+            'driver in progress',
+            'donation received',
+            'arrived at recipient'
+        ].indexOf(angular.lowercase(item.status)) > 0;
+      };
+    };
 
     $scope.refreshDonations = function () {
       donorService.getDonationsForCurrentUser()
@@ -28,4 +51,11 @@ angular.module('app')
     };
 
     $scope.refreshDonations();
+    $scope.autoRefresh = $interval(function () {
+      $scope.refreshDonations();
+    }, 5000);
+
+    $scope.$on('$destroy', function () {
+      $interval.cancel($scope.autoRefresh);
+    });
   });

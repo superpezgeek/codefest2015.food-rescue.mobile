@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('DriverListDetailCtrl', function($scope, $stateParams, $cordovaGeolocation, uiGmapGoogleMapApi, $ionicPlatform, driverService) {
+  .controller('DriverListDetailCtrl', function($scope, $stateParams, $cordovaGeolocation, uiGmapGoogleMapApi, $ionicPlatform, driverService, $ionicPopup, $state) {
     var posOptions = {timeout: 10000, enableHighAccuracy: false},
         myLocation = {
           latitude: null,
@@ -51,7 +51,21 @@ angular
     };
 
     $scope.accept = function() {
-      driverService.accept($scope.donation.donor.id, $scope.donation.id);
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Confirm',
+        template: 'Are you sure you want to accept this delivery?',
+        okType: 'button-balanced',
+        cancelText: 'No',
+        okText: 'Yes'
+      });
+      confirmPopup.then(function(res) {
+        if(res) {
+          driverService.accept($scope.donation.donor.id, $scope.donation.id);
+          $state.go('app.driver.currentDelivery', {donorId: $scope.donation.donor.id, donationId: $scope.donation.id}, {reload: true});
+        } else {
+          // dunno what to do here
+        }
+      });
     };
 
     $ionicPlatform.ready(function() {

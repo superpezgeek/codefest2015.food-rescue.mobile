@@ -1,17 +1,90 @@
 <ion-view view-title="Donation Details">
   <ion-content padding="true">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="refreshDonation()"></ion-refresher>
 
-    <h2>Item Name</h2>
-    <p>{{donation.name}}</p>
+    <div class="list card donations">
+      <div class="item item-avatar">
+        <img ng-src="{{donation.image}}">
 
-    <h2>Item Description</h2>
-    <p>{{donation.description}}</p>
+        <h2>{{donation.name}}</h2>
 
-    <h2>Gross Weight</h2>
-    <p>{{donation.dimensions}}</p>
+        <p class="donations donation-state">{{donation.completed ? 'Completed' : donation.status}}</p>
+      </div>
 
-    <h2>Special Instructions</h2>
-    <p>{{donation.special_instructions}}</p>
+      <div class="item item-divider assertive" ng-if="requiresAcknowledgement(donation)">Acknowledge</div>
+      <div class="item item-text-body" ng-if="requiresAcknowledgement(donation)">
+        <qrcode data="{{donation.driver_to_donor_handshake}}" size="200" version="4" error-correction-level="M"></qrcode>
+      </div>
+
+      <div class="item item-divider" ng-if="donation.driver">Driver</div>
+      <div class="item item-text-body profile" ng-if="donation.driver">
+        <div class="images row">
+          <div class="col">
+            <img src="img/driver-photo.jpg">
+          </div>
+          <div class="col">
+            <img src="img/driver-car.jpg">
+          </div>
+        </div>
+        <ion-list>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-person"></i>
+            <div>{{donation.driver.first_name}} {{donation.driver.last_name}}</div>
+          </ion-item>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-ios7-information"></i>
+            <div>{{donation.driver.email}}</div>
+            <div>{{donation.driver.phone_number}}</div>
+            <div>{{donation.driver.address_1}}</div>
+            <div ng-if="donation.driver.address_2">{{donation.driver.address_2}}</div>
+            <div>{{donation.driver.city}}, {{donation.driver.state}} {{donation.driver.zipcode}}</div>
+          </ion-item>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-model-s"></i>
+            <div>{{donation.driver.car_year}} {{donation.driver.car_make}} {{donation.driver.car_model}}</div>
+            <div>{{donation.driver.license_plate_number}}</div>
+            <div>{{donation.driver.drivers_license_number}}</div>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="item item-divider" ng-if="donation.recipient">Recipient</div>
+      <div class="item item-text-wrap" ng-if="donation.recipient">
+        <ion-list>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-person-stalker"></i>
+            <div>{{donation.recipient.organization_name}}</div>
+          </ion-item>
+          <ion-item class="item item-icon-left item-icon-right">
+            <i class="icon ion-ios7-information"></i>
+            <div>{{donation.recipient.email}}</div>
+            <div>{{donation.recipient.phone_number}}</div>
+            <div>{{donation.recipient.address_1}}</div>
+            <div ng-if="donation.recipient.address_2">{{donation.recipient.address_2}}</div>
+            <div>{{donation.recipient.city}}, {{donation.recipient.state}} {{donation.recipient.zipcode}}</div>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="item item-divider">Description</div>
+      <div class="item item-body">{{donation.description}}</div>
+
+      <div class="item item-divider">Gross Weight</div>
+      <div class="item item-body">{{donation.weight}}</div>
+
+      <div class="item item-divider">Dimensions</div>
+      <div class="item item-body">{{donation.dimensions}}</div>
+
+      <div class="item item-divider" ng-if="donation.special_instructions">Special Instructions</div>
+      <div class="item item-text-wrap" ng-if="donation.special_instructions">{{donation.special_instructions}}</div>
+
+      <div class="item item-divider">Audit Trail</div>
+      <div class="item item-text-wrap">
+        <p>Created: {{donation.created_at | date:'medium'}}</p>
+        <p>Last Update: {{donation.updated_at | date:'medium'}}</p>
+        <p ng-if="donation.completed">Completed: {{donation.completed_at | date:'medium'}}</p>
+      </div>
+    </div>
 
   </ion-content>
 </ion-view>

@@ -110,6 +110,15 @@
             }
           }
         })
+        .state('app.driver.currentDelivery', {
+          url: '/current-delivery/:donorId?/:donationId?',
+          views: {
+            'driverContent': {
+              templateUrl: 'views/driver/current-delivery.html',
+              controller: 'DriverCurrentDeliveryCtrl'
+            }
+          }
+        })
         .state('app.driverReg', {
           url: '/driver-reg',
           abstract: true,
@@ -217,6 +226,7 @@
         })
         .state('app.donor.createDonation', {
           url: '/donate',
+          cache: false,
           views: {
             'DonorContent': {
               templateUrl: 'views/donor/create-donation.html',
@@ -226,6 +236,7 @@
         })
         .state('app.donor.viewDonation', {
           url: '/donation/:id',
+          cache: false,
           views: {
             'DonorContent': {
               templateUrl: 'views/donor/view-donation.html',
@@ -235,6 +246,7 @@
         })
         .state('app.donor.editDonation', {
           url: '/donation/:id',
+          cache: false,
           views: {
             'DonorContent': {
               templateUrl: 'views/donor/edit-donation.html',
@@ -249,15 +261,6 @@
             'DonorContent': {
               templateUrl: 'views/donor/list-donations.html',
               controller: 'DonationListCtrl'
-            }
-          }
-        })
-        .state('app.handshake', {
-          url: '/handshake',
-          views: {
-            'menuContent': {
-              templateUrl: 'views/handshake.html',
-              controller: 'HandshakeCtrl'
             }
           }
         });
