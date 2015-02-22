@@ -5,4 +5,13 @@
       vertical-align: middle;
     }
   }
+
+  .dummy-avatar {
+    img {
+      max-height: 200px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

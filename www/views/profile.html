@@ -1,11 +1,16 @@
 <ion-view title="" class="profile">
   <ion-content>
-    <div class="images row">
+    <div ng-show="user.user_type === 'Driver'" class="images row">
       <div class="col">
         <img src="img/driver-photo.jpg">
       </div>
       <div class="col">
         <img src="img/driver-car.jpg">
+      </div>
+    </div>
+    <div ng-show="user.user_type !== 'Driver'" class="images row">
+      <div class="col dummy-avatar">
+        <img src="img/avatar.svg">
       </div>
     </div>
     <ion-list>
@@ -23,7 +28,7 @@
         <div>{{user.city}}, {{user.state}} {{user.zipcode}}</div>
         <i class="icon ion-ios7-arrow-forward"></i>
       </ion-item>
-      <ion-item class="item item-icon-left item-icon-right" ui-sref="app.profile.vehicleInfo">
+      <ion-item class="item item-icon-left item-icon-right" ng-show="user.user_type === 'Driver'" ui-sref="app.profile.vehicleInfo">
         <i class="icon ion-model-s"></i>
         <div>{{user.car_year}} {{user.car_make}} {{user.car_model}}</div>
         <div>{{user.license_plate_number}}</div>
