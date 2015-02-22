@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('LoginCtrl', function ($scope, loginService, $ionicLoading, userService) {
+  .controller('LoginCtrl', function ($scope, loginService, $ionicLoading, userService, $state) {
     $scope.showLoginError = false;
 
     $scope.user = {
@@ -16,6 +16,7 @@ angular.module('app')
           $ionicLoading.hide();
           $scope.showLoginError = false;
           userService.user = value.data.user;
+          $state.go('app.profile.main');
         },
         function () {
           $ionicLoading.hide();

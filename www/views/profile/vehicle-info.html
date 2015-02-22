@@ -1,0 +1,28 @@
+<ion-view>
+  <ion-nav-buttons side="right">
+    <button type="button" class="button button-clear" ng-click="save(user)">
+      Save
+    </button>
+  </ion-nav-buttons>
+  <ion-content scroll="false">
+    <form name="contactInfoForm">
+      <ion-list>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Car Make" name="make" ng-model="user.car_make">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Model" name="model" ng-model="user.car_model">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Year" name="year" ng-model="user.car_year">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="License Plate Number" name="licenseplate" ng-model="user.license_plate_number">
+        </ion-item>
+        <ion-item class="item-input">
+          <input type="text" placeholder="Drivers License Number" name="driverslicense" ng-model="user.drivers_license_number">
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-view>

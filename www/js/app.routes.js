@@ -23,12 +23,20 @@
             }
           }
         })
+        .state('app.choose-role', {
+          url: '/choose',
+          views: {
+            'menuContent': {
+              templateUrl: 'views/choose-role.html'
+            }
+          }
+        })
         .state('app.driver', {
           url: '/driver',
           abstract: true,
           views: {
             'menuContent': {
-                template: '<ion-nav-view name="driverContent"></ion-nav-view>'
+              template: '<ion-nav-view name="driverContent"></ion-nav-view>'
             }
           }
         })
@@ -67,7 +75,7 @@
               templateUrl: 'views/driver/driverReg1.html'
             }
           }
-        })        
+        })
         .state('app.driverReg.step2', {
           url: '/step-2',
           views: {
@@ -100,12 +108,102 @@
             }
           }
         })
-        .state('app.donation', {
-          url: '/donation',
+        .state('app.profile', {
+          url: '/profile',
+          abstract: true,
           views: {
             'menuContent': {
+              template: '<ion-nav-view name="profileContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.profile.main', {
+          url: '/main',
+          cache: false,
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile.html',
+              controller: 'ProfileCtrl'
+            }
+          }
+        })
+        .state('app.profile.name', {
+          url: '/name',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/name.html',
+              controller: 'ProfileNameCtrl'
+            }
+          }
+        })
+        .state('app.profile.contactInfo', {
+          url: '/contact-info',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/contact-info.html',
+              controller: 'ProfileContactInfoCtrl'
+            }
+          }
+        })
+        .state('app.profile.vehicleInfo', {
+          url: '/vehicle-info',
+          views: {
+            'profileContent': {
+              templateUrl: 'views/profile/vehicle-info.html',
+              controller: 'ProfileVehicleInfoCtrl'
+            }
+          }
+        })
+        .state('logout', {
+          url: '/logout',
+          controller: function($state, userService) {
+            userService.clearUser();
+            $state.go('login');
+          }
+        })
+        .state('app.donor', {
+          url: '/donor',
+          abstract: true,
+          views: {
+            'menuContent': {
+              template: '<ion-nav-view name="DonorContent"></ion-nav-view>'
+            }
+          }
+        })
+        .state('app.donor.createDonation', {
+          url: '/donate',
+          views: {
+            'DonorContent': {
               templateUrl: 'views/donor/create-donation.html',
-              controller: 'DonorCtrl'
+              controller: 'DonationCtrl'
+            }
+          }
+        })
+        .state('app.donor.viewDonation', {
+          url: '/donation/:id',
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/view-donation.html',
+              controller: 'DonationCtrl'
+            }
+          }
+        })
+        .state('app.donor.editDonation', {
+          url: '/donation/:id',
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/edit-donation.html',
+              controller: 'DonationCtrl'
+            }
+          }
+        })
+        .state('app.donor.listDonations', {
+          url: '/donations',
+          cache: false,
+          views: {
+            'DonorContent': {
+              templateUrl: 'views/donor/list-donations.html',
+              controller: 'DonationListCtrl'
             }
           }
         });

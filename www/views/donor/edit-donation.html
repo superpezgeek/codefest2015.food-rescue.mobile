@@ -2,7 +2,6 @@
   <ion-content padding="true">
 
     <form name="createDonationForm"
-          ng-init="donation = {}"
           ng-submit="submitDonation(donation)">
 
       <label class="item item-input">
@@ -23,7 +22,7 @@
       </label>
 
       <button type="submit" class="button button-block button-positive">
-        Donate
+        Save
       </button>
 
       <div class="bar bar-assertive message-error" ng-class="{'show': !!failure}">
