@@ -1,35 +1,39 @@
-<ion-view view-title="Donate">
-  <ion-content padding="true">
+<ion-view view-title="Donation" ng-init="donation = {}">
+  <ion-nav-buttons side="right">
+    <button type="button" class="button button-clear" ng-click="submitDonation(donation)">
+      Create
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
 
-    <form name="createDonationForm"
-          ng-init="donation = {}"
-          ng-submit="submitDonation(donation)">
+    <form name="createDonationForm">
 
-      <label class="item item-input">
-        <input type="text" placeholder="Item Name" ng-model="donation.name">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Item Name</span>
+        <input type="text" ng-model="donation.name">
       </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Item Description" ng-model="donation.description">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Item Description</span>
+        <textarea ng-model="donation.description" rows="2"></textarea>
       </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Gross Weight" ng-model="donation.weight">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Gross Weight</span>
+        <input type="text" ng-model="donation.weight">
       </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Dimensions" ng-model="donation.dimensions">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Dimensions</span>
+        <input type="text" ng-model="donation.dimensions">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Special Instructions</span>
+        <textarea type="text" placeholder="Eg. bring around to rear loading dock" ng-model="donation.special_instructions" rows="2"></textarea>
       </label>
 
-      <label class="item item-input">
-        <input type="text" placeholder="Special Instructions" ng-model="donation.special_instructions">
-      </label>
-
-      <button type="submit" class="button button-block button-positive">
-        Donate
-      </button>
-
-      <div class="bar bar-assertive message-error" ng-class="{'show': !!failure}">
-        <div class="error-message">Could not save changes</div>
-      </div>
     </form>
+
+    <div class="bar bar-assertive message-error" ng-class="{'show': !!failure}">
+      <div class="error-message">Could not save changes</div>
+    </div>
 
   </ion-content>
 </ion-view>
