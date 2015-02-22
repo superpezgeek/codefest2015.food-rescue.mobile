@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, $interval) {
+  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, $interval, userService) {
 
     $scope.refreshDonation = function () {
       if ($stateParams.id) {
@@ -35,7 +35,27 @@ angular.module('app')
     };
 
     $scope.requiresAcknowledgement = function (donation) {
-      return angular.lowercase(donation.status) === 'arrived at donor';
+      if (donation) {
+        if (angular.lowercase(userService.user.user_type) === 'donor') {
+          return angular.lowercase(donation.status) === 'arrived at donor';
+        }
+        if (angular.lowercase(userService.user.user_type) === 'recipient') {
+          return angular.lowercase(donation.status) === 'arrived at recipient';
+        }
+      }
+    };
+
+    $scope.currentUserIs = function (user) {
+      return userService.user.id === user.id;
+    };
+
+    $scope.acknowledgementFor = function (donation) {
+      if (angular.lowercase(userService.user.user_type) === 'donor') {
+        return donation.driver_to_donor_handshake;
+      }
+      if (angular.lowercase(userService.user.user_type) === 'recipient') {
+        return donation.donor_to_recipient_handshake;
+      }
     };
 
     $scope.autoRefresh = $interval(function () {
