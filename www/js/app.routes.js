@@ -6,17 +6,20 @@
       $stateProvider
         .state('login', {
           url: "/login",
+          cache: false,
           templateUrl: "views/login.html",
           controller: "LoginCtrl"
         })
         .state('app', {
           url: '/app',
           abstract: true,
+          cache: false,
           templateUrl: 'views/sideMenu.html',
           controller: 'SideMenuCtrl'
         })
         .state('app.overview', {
           url: '/overview',
+          cache: false,
           views: {
             'menuContent': {
               templateUrl: 'views/overview.html'
@@ -25,6 +28,7 @@
         })
         .state('app.choose-role', {
           url: '/choose',
+          cache: false,
           views: {
             'menuContent': {
               templateUrl: 'views/choose-role.html'
@@ -33,6 +37,7 @@
         })
         .state('app.donorReg', {
           url: '/donor-reg',
+          cache: false,
           abstract: true,
           views: {
             'menuContent': {
@@ -43,6 +48,7 @@
         })
         .state('app.donorReg.step1', {
           url: '/step-1',
+          cache: false,
           views: {
             'donorReg': {
               templateUrl: 'views/donor/donor-reg-1.html'
@@ -51,6 +57,7 @@
         })
         .state('app.donorReg.step2', {
           url: '/step-2',
+          cache: false,
           views: {
             'donorReg': {
               templateUrl: 'views/donor/donor-reg-2.html'
@@ -60,6 +67,7 @@
         .state('app.recipientReg', {
           url: '/recipient-reg',
           abstract: true,
+          cache: false,
           views: {
             'menuContent': {
               template: '<ion-nav-view name="recipientReg"></ion-nav-view>',
@@ -69,6 +77,7 @@
         })
         .state('app.recipientReg.step1', {
           url: '/step-1',
+          cache: false,
           views: {
             'recipientReg': {
               templateUrl: 'views/recipient/recipient-reg-1.html'
@@ -77,6 +86,7 @@
         })
         .state('app.recipientReg.step2', {
           url: '/step-2',
+          cache: false,
           views: {
             'recipientReg': {
               templateUrl: 'views/recipient/recipient-reg-2.html'
@@ -86,6 +96,7 @@
         .state('app.driver', {
           url: '/driver',
           abstract: true,
+          cache: false,
           views: {
             'menuContent': {
               template: '<ion-nav-view name="driverContent"></ion-nav-view>'
@@ -94,6 +105,7 @@
         })
         .state('app.driver.listing', {
           url: '/listing',
+          cache: false,
           views: {
             'driverContent': {
               templateUrl: 'views/driver/listing.html',
@@ -103,6 +115,7 @@
         })
         .state('app.driver.listDetail', {
           url: '/listing/details/:donorId/:donationId',
+          cache: false,
           views: {
             'driverContent': {
               templateUrl: 'views/driver/listDetail.html',
@@ -112,6 +125,7 @@
         })
         .state('app.driver.currentDelivery', {
           url: '/current-delivery?donorId&donationId',
+          cache: false,
           views: {
             'driverContent': {
               templateUrl: 'views/driver/current-delivery.html',
@@ -122,6 +136,7 @@
         .state('app.driverReg', {
           url: '/driver-reg',
           abstract: true,
+          cache: false,
           views: {
             'menuContent': {
               template: '<ion-nav-view name="driverReg"></ion-nav-view>',
@@ -131,6 +146,7 @@
         })
         .state('app.driverReg.step1', {
           url: '/step-1',
+          cache: false,
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg1.html'
@@ -139,6 +155,7 @@
         })
         .state('app.driverReg.step2', {
           url: '/step-2',
+          cache: false,
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg2.html'
@@ -147,6 +164,7 @@
         })
         .state('app.driverReg.step3', {
           url: '/step-3',
+          cache: false,
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg3.html'
@@ -155,6 +173,7 @@
         })
         .state('app.driverReg.step4', {
           url: '/step-4',
+          cache: false,
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg4.html'
@@ -163,6 +182,7 @@
         })
         .state('app.driverReg.step5', {
           url: '/step-5',
+          cache: false,
           views: {
             'driverReg': {
               templateUrl: 'views/driver/driverReg5.html'
@@ -171,6 +191,7 @@
         })
         .state('app.profile', {
           url: '/profile',
+          cache: false,
           abstract: true,
           views: {
             'menuContent': {
@@ -190,6 +211,7 @@
         })
         .state('app.profile.name', {
           url: '/name',
+          cache: false,
           views: {
             'profileContent': {
               templateUrl: 'views/profile/name.html',
@@ -199,6 +221,7 @@
         })
         .state('app.profile.contactInfo', {
           url: '/contact-info',
+          cache: false,
           views: {
             'profileContent': {
               templateUrl: 'views/profile/contact-info.html',
@@ -208,6 +231,7 @@
         })
         .state('app.profile.vehicleInfo', {
           url: '/vehicle-info',
+          cache: false,
           views: {
             'profileContent': {
               templateUrl: 'views/profile/vehicle-info.html',
@@ -217,6 +241,7 @@
         })
         .state('app.donor', {
           url: '/donor',
+          cache: false,
           abstract: true,
           views: {
             'menuContent': {
