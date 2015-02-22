@@ -1,30 +1,28 @@
 angular
   .module('app')
-  .controller('DriverListDetailCtrl', function($scope, $stateParams, $cordovaGeolocation, uiGmapGoogleMapApi) {
+  .controller('DriverListDetailCtrl', function($scope, $stateParams, $cordovaGeolocation, uiGmapGoogleMapApi, $ionicPlatform) {
     var posOptions = {timeout: 10000, enableHighAccuracy: false};
-    $scope.map = {
-      center: {
-        latitude: null,
-        longitude: null
-      },
-      zoom: 12
-    };
-
-    $cordovaGeolocation
-      .getCurrentPosition(posOptions)
-      .then(function (result) {
-        $scope.map.center.latitude  = result.coords.latitude;
-        $scope.map.center.longitude = result.coords.longitude;
-      }, function(err) {
-        console.log(err);
-      });
-
-    uiGmapGoogleMapApi.then(function() {
-      // http://angular-ui.github.io/angular-google-maps/#!/api
-      // http://angular-ui.github.io/angular-google-maps/#!/use
-
-      console.log('maps loaded');
-    });
 
     $scope.id = $stateParams.id;
+
+    $ionicPlatform.ready(function() {
+      $cordovaGeolocation
+        .getCurrentPosition(posOptions)
+        .then(function (result) {
+          console.log(result);
+          $scope.map = {
+            center: {
+              latitude: result.coords.latitude,
+              longitude: result.coords.longitude
+            },
+            zoom: 12
+          };
+        }, function(err) {
+          console.log(err);
+        });
+    });
+
+    uiGmapGoogleMapApi.then(function() {
+
+    });
   });
