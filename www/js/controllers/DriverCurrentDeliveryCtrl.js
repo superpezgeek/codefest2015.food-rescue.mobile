@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('DriverCurrentDeliveryCtrl', function($scope, $stateParams, userService, driverService, donorService, $cordovaBarcodeScanner) {
+  .controller('DriverCurrentDeliveryCtrl', function($scope, $stateParams, userService, driverService, donorService, $cordovaBarcodeScanner, $ionicPopup, $state) {
     var user = userService.user;
 
     if($stateParams.donorId && $stateParams.donationId) {
@@ -16,7 +16,7 @@ angular.module('app')
       driverService
         .getCurrentDonations(user)
         .success(function(result) {
-          $scope.donations = result;
+          $scope.donation = result[0];
         })
         .error(function(error) {
           console.log(error);
@@ -61,6 +61,18 @@ angular.module('app')
 
           donorService.verifyDriverToRecipientHandshake($scope.donation.donor.id, $scope.donation.id, barcodeData.text).success(function(){
             $scope.donation.status = 'Completed';
+            var confirmPopup = $ionicPopup.alert({
+              title: 'You\'re done!',
+              template: 'This delivery is complete!  Thanks!',
+              okType: 'button-balanced'
+            });
+            confirmPopup.then(function(res) {
+              if(res) {
+                $state.go('app.driver.listing', {reload: true});
+              } else {
+                // dunno what to do here
+              }
+            });
           });
         }, function(error) {
           // An error occurred
