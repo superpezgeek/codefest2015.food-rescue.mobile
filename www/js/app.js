@@ -34,7 +34,7 @@
       uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyBmqSE_OZ435kcKruJi6k8ffRlDV2OLlss',
         v: '3.17',
-        libraries: 'weather,geometry,visualization'
+        libraries: 'geometry,visualization'
       });
     });
 
