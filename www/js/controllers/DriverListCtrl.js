@@ -1,10 +1,16 @@
 angular
   .module('app')
-  .controller('DriverListCtrl', function($scope, uiGmapGoogleMapApi) {
-    uiGmapGoogleMapApi.then(function() {
-      // http://angular-ui.github.io/angular-google-maps/#!/api
-      // http://angular-ui.github.io/angular-google-maps/#!/use
+  .controller('DriverListCtrl', function($scope, $http, $cordovaGeolocation) {
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    var position = {};
 
-      console.log('maps loaded');
-    });
+    $cordovaGeolocation
+      .getCurrentPosition(posOptions)
+      .then(function (result) {
+        position.latitude  = result.coords.latitude;
+        position.longitude = result.coords.longitude;
+        console.log(position);
+      }, function(err) {
+        console.log(err);
+      });
   });
