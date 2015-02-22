@@ -15,6 +15,9 @@ angular.module('app')
       get: function() {
         return $http.get('https://foodrescue.herokuapp.com/api/v1/drivers/');
       },
+      getCurrentDonations: function(user) {
+        return $http.get('https://foodrescue.herokuapp.com/api/v1/drivers/' + user.id + '/current_donations');
+      },
       getDonation: function(donorId, donationId) {
         return $http.get('https://foodrescue.herokuapp.com/api/v1/donors/' + donorId + '/donations/' + donationId);
       },

@@ -110,6 +110,15 @@
             }
           }
         })
+        .state('app.driver.currentDelivery', {
+          url: '/current-delivery/:donorId?/:donationId?',
+          views: {
+            'driverContent': {
+              templateUrl: 'views/driver/current-delivery.html',
+              controller: 'DriverCurrentDeliveryCtrl'
+            }
+          }
+        })
         .state('app.driverReg', {
           url: '/driver-reg',
           abstract: true,
@@ -249,15 +258,6 @@
             'DonorContent': {
               templateUrl: 'views/donor/list-donations.html',
               controller: 'DonationListCtrl'
-            }
-          }
-        })
-        .state('app.handshake', {
-          url: '/handshake',
-          views: {
-            'menuContent': {
-              templateUrl: 'views/handshake.html',
-              controller: 'HandshakeCtrl'
             }
           }
         });
