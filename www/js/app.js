@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps'])
+    .module('app', ['ionic', 'ngCordova', 'uiGmapgoogle-maps', 'monospaced.qrcode'])
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
