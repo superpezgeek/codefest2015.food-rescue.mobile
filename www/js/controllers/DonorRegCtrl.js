@@ -1,10 +1,10 @@
 angular
   .module('app')
-  .controller('DonorRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading) {
+  .controller('DonorRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading, $ionicHistory, $window) {
     $scope.user = {};
 
     $scope.createUser = function() {
-      $scope.user.type = 'Driver';
+      $scope.user.type = 'Donor';
 
       $ionicLoading.show({
         template: 'Registering...'
@@ -12,14 +12,21 @@ angular
 
       userRegService.create($scope.user).then(function(response) {
         var user = { email: $scope.user.email, password: $scope.user.password };
+
+        // TODO: Do this better!
+        var deviceToken = $window.localStorage.getItem('foodrescue.deviceToken');
+        user.device_id = deviceToken;
+
         loginService.login(user).then(function (value) {
           $ionicLoading.hide();
           userService.user = value.data.user;
+
           var first_name = $scope.user.first_name;
           var last_name = $scope.user.last_name;
           $scope.user = {};
           $scope.user.first_name = first_name;
           $scope.user.last_name = last_name;
+
           $state.go('app.donorReg.step2');
         },
         function () {
@@ -40,8 +47,17 @@ angular
 
       driverService.update(newUser).then(function(response) {
         $ionicLoading.hide();
-        userService.user = response.data;
-        $state.go('app.profile.main', null, {location: 'replace'});
+
+        var ridic = angular.copy(response.data);
+        ridic.user_type = 'Donor';
+        userService.user = ridic;
+
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true,
+          historyRoot: true
+        });
+        $state.go('app.profile.main');
       });
     };
   });

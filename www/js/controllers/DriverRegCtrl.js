@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .controller('DriverRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading) {
+  .controller('DriverRegCtrl', function($scope, $state, userRegService, userService, loginService, driverService, $ionicLoading, $ionicHistory) {
     $scope.user = {};
 
     $scope.moveToStep = function(step) {
@@ -44,8 +44,15 @@ angular
 
       driverService.update(newUser).then(function(response) {
         $ionicLoading.hide();
-        userService.user = response.data;
-        $state.go('app.profile.main', null, {location: 'replace'});
+
+        userService.user = angular.extend(userService.user, response.data, {user_type: 'Driver'});
+
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true,
+          historyRoot: true
+        });
+        $state.go('app.profile.main');
       });
     };
   });

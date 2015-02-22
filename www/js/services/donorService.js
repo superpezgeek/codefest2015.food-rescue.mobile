@@ -4,6 +4,10 @@ angular.module('app')
       return 'https://foodrescue.herokuapp.com/api/v1/donors/' + userService.user.id + '/donations/' + donation.id;
     };
 
+    this.update = function(user){
+      return $http.patch('https://foodrescue.herokuapp.com/api/v1/donors/' + user.id, {donor: user});
+    };
+
     this.submitDonation = function (donation) {
       if (donation.id) {
         return $http.patch('https://foodrescue.herokuapp.com/api/v1/donors/' + userService.user.id + '/donations/' + donation.id, {donation: donation})

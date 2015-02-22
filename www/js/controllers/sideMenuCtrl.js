@@ -13,9 +13,13 @@ angular
     }
 
     $scope.logout = function() {
-      $ionicHistory.clearHistory();
       userService.clearUser();
-      $state.go('login', {}, {reload: true});
+      $ionicHistory.nextViewOptions({
+        disableAnimate: true,
+        disableBack: true,
+        historyRoot: true
+      });
+      $state.go('login');
     };
   });
   
