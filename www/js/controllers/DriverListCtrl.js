@@ -7,7 +7,6 @@ angular
       .get()
       .success(function(result) {
         $scope.donations = result.possible_donations;
-        console.log(result);
       })
       .error(function(error) {
         console.log(error);

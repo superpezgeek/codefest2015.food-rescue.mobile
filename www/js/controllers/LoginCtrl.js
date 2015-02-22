@@ -20,7 +20,16 @@ angular.module('app')
           userService.user = value.data.user;
 
           $scope.user = {};
-          $state.go('app.profile.main');
+
+          if(userService.user.user_type === 'Driver') {
+            $state.go('app.driver.listing');
+          }
+          else if(userService.user.user_type === 'Donor' || userService.user.user_type === 'Recipient') {
+            $state.go('app.donor.listDonations');
+          }
+          else {
+            $state.go('app.profile.main');
+          }
         },
         function () {
           $ionicLoading.hide();

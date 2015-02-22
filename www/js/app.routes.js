@@ -66,7 +66,7 @@
           }
         })
         .state('app.driver.listDetail', {
-          url: '/listing/details/:id',
+          url: '/listing/details/:donorId/:donationId',
           views: {
             'driverContent': {
               templateUrl: 'views/driver/listDetail.html',
