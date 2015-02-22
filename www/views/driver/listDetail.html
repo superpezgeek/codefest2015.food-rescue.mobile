@@ -10,13 +10,25 @@
         Donor
       </ion-item>
       <ion-item>
-        Donor
+        <b>{{ donation.donor.first_name + ' ' + donation.donor.last_name }}</b>
+        <br>
+        {{ donation.donor.address_1 }}
+        <br>
+        {{ donation.donor.city + ', ' + donation.donor.state }}
+        &nbsp;&nbsp;&nbsp;
+        {{ donation.donor.zipcode }}
       </ion-item>
       <ion-item class="item-divider">
         Recipient
       </ion-item>
       <ion-item>
-        Recipient
+        <b>{{ donation.recipient.first_name + ' ' + donation.recipient.last_name }}</b>
+        <br>
+        {{ donation.recipient.address_1 }}
+        <br>
+        {{ donation.recipient.city + ', ' + donation.recipient.state }}
+        &nbsp;&nbsp;&nbsp;
+        {{ donation.recipient.zipcode }}
       </ion-item>
       <ion-item class="item-divider">
         Donation Details
@@ -26,4 +38,7 @@
       </ion-item>
     </ion-list>
   </ion-content>
+  <div class="bar bar-footer" style="padding: 0; margin: 0;">
+    <button class="button button-block button-balanced text-center" style="margin: 0; border-radius: 0;">Accept</button>
+  </div>
 </ion-view>
