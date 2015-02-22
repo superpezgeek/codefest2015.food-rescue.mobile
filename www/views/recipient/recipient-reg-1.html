@@ -1,0 +1,29 @@
+<ion-view view-title="Recipient Registration - Step 1">
+    <ion-content>
+      <form name="recipientReg1Form" ng-submit="createUser()">
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" ng-required="true" placeholder="First Name" name="first-name" ng-model="user.first_name">
+          </label>
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" ng-required="true" placeholder="Last Name" name="last-name" ng-model="user.last_name">
+          </label>
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" ng-required="true" placeholder="Email" name="email" ng-model="user.email">
+          </label>
+        </div>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="password" ng-required="true" placeholder="Password" name="last-name" ng-model="user.password">
+          </label>
+        </div>
+        <button type="submit" class="button button-block button-positive">
+          Register
+        </button>
+      </form>
+    </ion-content>
+</ion-view>

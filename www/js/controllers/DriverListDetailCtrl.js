@@ -5,6 +5,14 @@ angular
         myLocation = {
           latitude: null,
           longitude: null
+        },
+        donorLocation = {
+          latitude: null,
+          longitude: null
+        },
+        recipientLocation = {
+          latitude: null,
+          longitude: null
         };
 
     $scope.map = {
@@ -15,12 +23,17 @@ angular
       zoom: 12
     };
 
-
-
     driverService
       .getDonation($stateParams.donorId, $stateParams.donationId)
       .success(function(result) {
+        console.log(result);
         $scope.donation = result;
+
+        donorLocation.latitude = result.donor.lat;
+        donorLocation.longitude = result.donor.lng;
+
+        recipientLocation.latitude = result.recipient.lat;
+        recipientLocation.longitude = result.recipient.lng;
       })
       .error(function(error) {
         console.log(error);
@@ -30,11 +43,22 @@ angular
       return myLocation;
     };
 
+    $scope.getDonorLocation = function() {
+      return donorLocation;
+    };
+
+    $scope.getRecipientLocation = function() {
+      return recipientLocation;
+    };
+
+    $scope.accept = function() {
+      driverService.accept($scope.donation.donor.id, $scope.donation.id);
+    };
+
     $ionicPlatform.ready(function() {
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (result) {
-          console.log(result);
           $scope.map.center.latitude = result.coords.latitude;
           $scope.map.center.longitude = result.coords.longitude;
 
@@ -43,9 +67,5 @@ angular
         }, function(err) {
           console.log(err);
         });
-    });
-
-    uiGmapGoogleMapApi.then(function() {
-
     });
   });
