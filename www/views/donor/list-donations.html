@@ -16,13 +16,10 @@
       <div class="item item-divider">
         In Progress
       </div>
-      <ion-item ng-repeat="donation in donations | filter:inProgress()" ng-click="view(donation)" class="item-thumbnail-left">
+      <ion-item ng-repeat="donation in donations | filter:!completed()" ng-click="view(donation)" class="item-thumbnail-left">
         <img ng-src="{{donation.image}}">
-
         <h2>{{donation.name}}</h2>
-
         <p>{{donation.description}}</p>
-
         <p class="donation-state">{{donation.status}}</p>
 
         <ion-option-button class="button-info" ng-click="edit(donation)">Edit</ion-option-button>
@@ -30,16 +27,12 @@
       </ion-item>
 
       <div class="item item-divider">
-        Complete
+        Completed
       </div>
       <ion-item ng-repeat="donation in donations | filter:completed()" ng-click="view(donation)" class="item-thumbnail-left">
         <img ng-src="{{donation.image}}">
-
         <h2>{{donation.name}}</h2>
-
         <p>{{donation.description}}</p>
-
-        <p class="donation-state">{{donation.state}}</p>
       </ion-item>
     </ion-list>
 

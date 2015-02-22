@@ -1,12 +1,6 @@
 angular.module('app')
   .controller('DonationListCtrl', function ($scope, $ionicLoading, donorService, $state, $filter) {
 
-    $scope.inProgress = function () {
-      return function (item) {
-        return !item.completed;
-      };
-    };
-
     $scope.completed = function () {
       return function (item) {
         return item.completed;

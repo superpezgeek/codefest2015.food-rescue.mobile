@@ -1,14 +1,30 @@
 angular.module('app')
-  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams) {
+  .controller('DonationCtrl', function ($scope, $ionicLoading, $state, donorService, $stateParams, uiGmapGoogleMapApi) {
     var hideLoading = function () {
       $ionicLoading.hide();
     };
 
-    if ($stateParams.id) {
+    $scope.recipientLocation = function () {
+      var location = {};
+      if ($scope.donation) {
+        location.latitude = $scope.donation.recipient.lat;
+        location.longitude = $scope.donation.recipient.lng;
+      }
+      return location;
+    };
+
+    $scope.refreshDonation = function () {
       donorService.getDonationWithId($stateParams.id)
         .success(function (value) {
           $scope.donation = value;
+        })
+        .finally(function () {
+          $scope.$broadcast('scroll.refreshComplete');
         });
+    };
+
+    if ($stateParams.id) {
+      $scope.refreshDonation();
     }
 
     $scope.submitDonation = function (donation) {
@@ -27,5 +43,9 @@ angular.module('app')
           hideLoading();
         });
     };
+
+    uiGmapGoogleMapApi.then(function() {
+
+    });
 
   });
