@@ -1,0 +1,9 @@
+<ion-view title="Handshake Test">
+  <ion-content>
+    <qrcode data="{{qrdata}}" size="200" version="4" error-correction-level="M"></qrcode>
+    <input type="text" ng-model="thing">
+    <button ng-click="makeQrcode(thing)" class="button button-positive">Make a code</button>
+    <button ng-click="scan()" class="button button-positive">Scan a code</button>
+    {{success}}
+  </ion-content>
+</ion-view>

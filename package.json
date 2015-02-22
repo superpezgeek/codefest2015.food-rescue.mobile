@@ -19,6 +19,7 @@
     "org.apache.cordova.console",
     "org.apache.cordova.device",
     "https://github.com/Pushwoosh/pushwoosh-phonegap-3.0-plugin.git",
-    "org.apache.cordova.geolocation"
+    "org.apache.cordova.geolocation",
+    "https://github.com/wildabeast/BarcodeScanner.git"
   ]
 }
